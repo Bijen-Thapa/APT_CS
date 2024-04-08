@@ -8,15 +8,42 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
-    <nav class="flex justify-end">
-        <div class="w-8">
-            <img src="images/bars-solid.svg" alt="">
+    <nav class="w-[220px] h-screen fixed -right-[220px] top-0 duration-500 z-10 bg-violet-300" id="sidenav">
+        <div class="mt-20">
+            <ul>
+                <li><a href="#">User</a></li>
+                <li><a href="#">FEATURES</a></li>
+                <li><a href="#">SERVICES</a></li>
+                <li><a href="#">Products</a></li>
+                <li><a href="#">MEET US</a></li>
+            </ul>
         </div>
     </nav>
     <main>
-        <section class="px-5 ">
-
+        <section class="px-5 w-screen h-screen">
+            <p>Hello word</p>
         </section>
     </main>
+    <button class="h-10 w-10 text-center fixed top-5 right-8 z-20 bg-violet-300" id="menubtn1">
+        <img src="images/menu.png" alt="" id="menu">
+    </button>
 </body>
+<script>
+    let menubtn = document.getElementById("menubtn1")
+        let sidenav = document.getElementById("sidenav")
+        let menu = document.getElementById("menu")
+        
+        sidenav.style.right="-220px";
+
+        menubtn.onclick = function(){
+            if(sidenav.style.right == "-220px"){
+                sidenav.style.right = "0";
+                menu.src = "images/close.png"
+            }
+            else{
+                sidenav.style.right = "-220px";
+                menu.src = "images/menu.png"
+            }
+        }
+</script>
 </html>
