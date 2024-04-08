@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="registration.css">
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1>Registration</h1> 
+        </div>
+        
+        <form action="#" method="post">
+            <div class="user_details">
+                <div class="input_box">
+                    <label for="fname">First name:</label>
+                    <input type="text" id="fname" name="fname" placeholder="First name" required>
+                </div>
+                <div class="input_box">
+                    <label for="lname">Last name:</label>
+                    <input type="text" id="fname" name="lname" placeholder="Last name" required>
+                </div>
+                <div class="input_box">
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" id="phone" name="phone" placeholder="Phone number" required>
+                </div>
+                <div class="input_box">
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" name="email" placeholder="Your email"required>
+                </div>
+                <div class="genderOption">
+                    <label for="gender">Gender:</label>
+                    <input type="radio" id="male" name="gender" value="male" checked>
+                    <label for="male">Male</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label>
+                </div>
+                <div class="input_box">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                </div>
+                <div class="input_box">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+                <div class="input_box">
+                    <label for="repassword">Re-password:</label>
+                    <input type="password" id="repassword" name="repassword" placeholder="Retype password" required>
+                </div>
+
+                <button type="submit" name="Submit">Sign Up</button>
+            </div>
+            <p style="font-size: 14px; text-align: center">Have an account?<a href="login.html">Log In</a></p>
+        </form>
+    </div>
+</body>
+</html>

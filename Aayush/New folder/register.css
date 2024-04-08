@@ -1,0 +1,54 @@
+body{
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(171, 169, 161);
+}
+.registration {
+    width: 25%;
+    margin: 30px auto; 
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding-left: 30px;
+}
+
+h1 {
+    text-align: left;
+    margin-top: 4px;
+    margin-bottom: 10px;
+}
+
+.register_allign{
+    font-size: 20px;
+}
+
+.register_allign input[type="text"],
+.register_allign input[type="password"] {
+    width: 75%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.register_allign input[type="date"]{
+    width: 50%;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+
+.registration button[type="submit"] {
+    width: 50%;
+    padding: 10px;
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
