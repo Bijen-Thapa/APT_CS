@@ -7,16 +7,16 @@ public class UserModel {
 	private String userName, firstName, lastName, gender, address, email, phoneNo, password;
 	private LocalDate dob;
 	
-	public UserModel(String userName, String firstName, String lastName, String gender, String address, String email, String phoneNo, String password, LocalDate dob) {
+	public UserModel(String userName, String firstName, String lastName, LocalDate dob, String gender, String email, String phoneNo, String address, String password) {
 		this.userName = userName;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.dob = dob;
 		this.gender= gender;
-		this.address = address;
 		this.email = email;
 		this.phoneNo = phoneNo;
+		this.address = address;
 		this.password = password;
-		this.dob = dob;
 	}
 	
 	public LocalDate getDob() {

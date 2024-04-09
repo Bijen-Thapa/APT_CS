@@ -53,6 +53,7 @@ public class RegisterServlet extends HttpServlet {
 		UserModel newUser = new UserModel(userName, firstName, lastName, gender, address, email, phoneNumber, password, dob);
 		
 		
+		
 		doGet(request, response);
 	}
 
