@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="register.css">
+</head>
+<body>
+    <div class="registration">
+        <h1 style="justify-content: center">Registration Form</h1>
+        <form action="" method="post">
+            <div class="register_allign">
+                Email:<br> <input type="text" placeholder="Your email" name="email" required/>
+            </div>
+
+            <div class="register_allign">
+                Full Name: <input type="text" placeholder="Your name" name="fullName" required/>
+            </div>
+
+            <div class="register_allign">
+                Username: <input type="text" placeholder="Username" name="userName" required/>
+            </div>
+            <div class="register_allign">
+                <table style="width: 110%">
+                    <tr>
+                        <td>
+                            <div class="form">
+                                <label for="gender">Gender:</label><br>
+                                <input type="radio" id="male" name="gender" value="male">
+                                <label for="male">Male</label><br>
+                                <input type="radio" id="female" name="gender" value="female">
+                                <label for="female">Female</label>
+                            </div></td>
+                        <td>
+                            Date of Birth:<br> <input type="date" name="dateOfBirth" required/>
+                        </td>
+                    </tr>
+                </table>
+                
+
+                
+            </div>
+            
+            
+            <div class="register_allign">
+                Phone Number: <input type="text" placeholder="Your phone number" name="phoneNumber" required/>
+            </div>
+            <div class="register_allign">
+                Password: <input type="password" placeholder="Password" name="password" required/>
+            </div>
+            <div class="register_allign">
+                Retype password: <input type="password" placeholder="Password" name="retypePassword" required/>
+            </div>
+
+            <button type="submit" style="background-color: rgb(40, 179, 40)"   
+            name="Submit">Sign Up</button><br>
+
+
+            <p style="font-size: 17px; text-align: center">Have an account?<a href="login.html">Log In</a></p>
+        </form>
+    </div>
+
+</body>
+</html>
