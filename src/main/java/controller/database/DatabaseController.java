@@ -1,9 +1,11 @@
 package controller.database;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 import com.itDokan.model.UserModel;
 
@@ -29,14 +31,15 @@ public class DatabaseController {
 		try (Connection con = getConnection()){
 			PreparedStatement st = con.prepareStatement(StringUtil.INSERT_USER);
 			
-			st.setString(1, userModel.getFirstName());
-			st.setString(1, userModel.getFirstName());
-			st.setString(1, userModel.getFirstName());
-			st.setString(1, userModel.getFirstName());
-			st.setString(1, userModel.getFirstName());
-			st.setString(1, userModel.getFirstName());
-			st.setString(1, userModel.getFirstName());
-			st.setString(1, userModel.getFirstName());
+			st.setString(1, userModel.getUserName());
+			st.setString(2, userModel.getFirstName());
+			st.setString(3, userModel.getLastName());
+			st.setDate(4, Date.valueOf(userModel.getDob()));
+			st.setString(5, userModel.getGender());
+			st.setString(6, userModel.getEmail());
+			st.setString(7, userModel.getPhoneNo());
+			st.setString(8, userModel.getAddress());
+			st.setString(9, userModel.getPassword());
 			
 			int result = st.executeUpdate();
 			return result > 0 ? 1 : 0;

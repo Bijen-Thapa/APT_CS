@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.itDokan.model.UserModel;
 
+import controller.database.DatabaseController;
+
 /**
  * Servlet implementation class RegisterServlet
  */
@@ -18,6 +20,8 @@ import com.itDokan.model.UserModel;
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	DatabaseController dbController = new DatabaseController();
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -52,6 +56,11 @@ public class RegisterServlet extends HttpServlet {
 		
 		UserModel newUser = new UserModel(userName, firstName, lastName, gender, address, email, phoneNumber, password, dob);
 		
+		int result = dbController.registerUser(newUser)
+				
+		if (result > 0) {
+			response.sendRedirect(request.getContextPath() + "/home.jsp")	// TODO need update
+		}		
 		
 		doGet(request, response);
 	}
