@@ -1,4 +1,4 @@
-package com.itDokan.model;
+package com.itDokan.models;
 
 import java.time.LocalDate;
 

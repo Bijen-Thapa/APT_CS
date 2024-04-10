@@ -7,7 +7,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.time.LocalDate;
 
-import com.itDokan.model.UserModel;
+import com.itDokan.models.UserModel;
 
 import rest.StringUtil;
 

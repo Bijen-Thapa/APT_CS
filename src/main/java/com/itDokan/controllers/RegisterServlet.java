@@ -1,4 +1,4 @@
-package controller;
+package com.itDokan.controllers;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.itDokan.model.UserModel;
+import com.itDokan.models.UserModel;
 
 import controller.database.DatabaseController;
 
@@ -56,10 +56,10 @@ public class RegisterServlet extends HttpServlet {
 		
 		UserModel newUser = new UserModel(userName, firstName, lastName, gender, address, email, phoneNumber, password, dob);
 		
-		int result = dbController.registerUser(newUser)
+		int result = dbController.registerUser(newUser);
 				
 		if (result > 0) {
-			response.sendRedirect(request.getContextPath() + "/home.jsp")	// TODO need update
+			response.sendRedirect(request.getContextPath() + "/login.jsp");	// TODO need update
 		}		
 		
 		doGet(request, response);
