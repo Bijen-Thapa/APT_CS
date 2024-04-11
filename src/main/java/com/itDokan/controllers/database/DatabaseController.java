@@ -1,4 +1,4 @@
-package controller.database;
+package com.itDokan.controllers.database;
 
 import java.sql.Connection;
 import java.sql.Date;

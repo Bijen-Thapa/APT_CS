@@ -9,9 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.itDokan.controllers.database.DatabaseController;
 import com.itDokan.models.UserModel;
-
-import controller.database.DatabaseController;
 
 /**
  * Servlet implementation class RegisterServlet
