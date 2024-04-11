@@ -5,8 +5,6 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.time.LocalDate;
-
 import com.itDokan.models.UserModel;
 
 import rest.StringUtil;
@@ -18,6 +16,7 @@ public class DatabaseController {
 	}
 
 	public Connection getConnection() throws ClassNotFoundException, SQLException {
+		//Class.forName("com.mysql.jdbc.Driver");
 		Class.forName("com.mysql.jdbc.Driver");
 
 		String url = "jdbc:mysql://localhost:3306/it_dokan";
@@ -37,7 +36,7 @@ public class DatabaseController {
 			st.setDate(4, Date.valueOf(userModel.getDob()));
 			st.setString(5, userModel.getGender());
 			st.setString(6, userModel.getEmail());
-			st.setString(7, userModel.getPhoneNo());
+			st.setString(7, userModel.getPhoneNumber());
 			st.setString(8, userModel.getAddress());
 			st.setString(9, userModel.getPassword());
 			
@@ -49,7 +48,4 @@ public class DatabaseController {
 			return -1;
 		}
 	}
-	
-	
-	
 }

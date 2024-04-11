@@ -42,6 +42,7 @@ public class RegisterServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO 
+		String userName = request.getParameter("userName");
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String stringDob = request.getParameter("dob");
@@ -50,15 +51,24 @@ public class RegisterServlet extends HttpServlet {
 		String email = request.getParameter("email");
 		String phoneNumber = request.getParameter("phoneNumber");
 		String address = request.getParameter("address");
-		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
 		
-		UserModel newUser = new UserModel(userName, firstName, lastName, gender, address, email, phoneNumber, password, dob);
+		System.out.println("First Name: " + firstName);
+        System.out.println("Last Name: " + lastName);
+        System.out.println("Username: " + userName);
+        System.out.println("Date of Birth: " + dob);
+        System.out.println("Gender: " + gender);
+        System.out.println("Email: " + email);
+        System.out.println("phone number: " + phoneNumber);
+        System.out.println("Address: " + address);
+        System.out.println("Password: " + password);
 		
-		int result = dbController.registerUser(newUser);
-				
+		UserModel userModel = new UserModel(userName, firstName, lastName, dob, gender, email, phoneNumber, address, password);
+		
+		int result = dbController.registerUser(userModel);
+		System.out.println(result);		
 		if (result > 0) {
-			response.sendRedirect(request.getContextPath() + "/login.jsp");	// TODO need update
+			response.sendRedirect(request.getContextPath() + "/Pages/login.jsp");	// TODO need update
 		}		
 		
 		doGet(request, response);

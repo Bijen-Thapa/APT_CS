@@ -20,7 +20,7 @@
             <input
               type="text"
               id="username"
-              name="username"
+              name="userName"
               placeholder="Username"
             />
           </div>
@@ -38,7 +38,7 @@
           <button type="submit" name="Submit">Log In</button>
         </div>
         <p style="font-size: 14px; text-align: center">
-          Don't have an account? <a href="registration.html">Sign Up</a>
+          Don't have an account? <a href="registrations.jsp">Sign Up</a>
           <!-- // TODO need to uodate into JSP -->
         </p>
       </form>

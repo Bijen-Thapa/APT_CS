@@ -4,17 +4,17 @@ import java.time.LocalDate;
 
 public class UserModel {
 
-	private String userName, firstName, lastName, gender, address, email, phoneNo, password;
+	private String userName, firstName, lastName, gender, address, email, phoneNumber, password;
 	private LocalDate dob;
 	
-	public UserModel(String userName, String firstName, String lastName, String gender, String address, String email, String phoneNo, String password, LocalDate dob) {
+	public UserModel(String userName, String firstName, String lastName, LocalDate dob, String gender, String email, String phoneNumber, String address, String password) {
 		this.userName = userName;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.gender= gender;
 		this.address = address;
 		this.email = email;
-		this.phoneNo = phoneNo;
+		this.phoneNumber = phoneNumber;
 		this.password = password;
 		this.dob = dob;
 	}
@@ -61,11 +61,11 @@ public class UserModel {
 		this.password = password;
 	}
 	
-	public String getPhoneNo() {
-		return phoneNo;
+	public String getPhoneNumber() {
+		return phoneNumber;
 	}
-	public void setPhoneNo(String phoneNo) {
-		this.phoneNo = phoneNo;
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 	
 	public String getUserName() {
