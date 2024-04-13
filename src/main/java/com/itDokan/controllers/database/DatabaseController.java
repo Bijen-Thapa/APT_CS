@@ -5,9 +5,10 @@ import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import com.itDokan.models.UserModel;
 
-import rest.StringUtil;
+import com.itDokan.models.ProductModel;
+import com.itDokan.models.UserModel;
+import com.itDokan.rest.StringUtil;
 
 public class DatabaseController {
 
@@ -39,6 +40,24 @@ public class DatabaseController {
 			st.setString(7, userModel.getPhoneNumber());
 			st.setString(8, userModel.getAddress());
 			st.setString(9, userModel.getPassword());
+			
+			int result = st.executeUpdate();
+			return result > 0 ? 1 : 0;
+			
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
+	
+	public int addProduct (ProductModel productModel) {
+		try (Connection con = getConnection()){
+			PreparedStatement st = con.prepareStatement(StringUtil.INSERT_PRODUCT);
+			
+			st.setString(1, productModel.getName());
+			st.setBlob(2, productModel.getImage());
+			st.setString(3, productModel.getDescription());
+			st.setFloat(4, productModel.getPrice());
 			
 			int result = st.executeUpdate();
 			return result > 0 ? 1 : 0;

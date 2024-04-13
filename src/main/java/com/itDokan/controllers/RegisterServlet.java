@@ -53,15 +53,15 @@ public class RegisterServlet extends HttpServlet {
 		String address = request.getParameter("address");
 		String password = request.getParameter("password");
 		
-		System.out.println("First Name: " + firstName);
-        System.out.println("Last Name: " + lastName);
-        System.out.println("Username: " + userName);
-        System.out.println("Date of Birth: " + dob);
-        System.out.println("Gender: " + gender);
-        System.out.println("Email: " + email);
-        System.out.println("phone number: " + phoneNumber);
-        System.out.println("Address: " + address);
-        System.out.println("Password: " + password);
+//		System.out.println("First Name: " + firstName);
+//        System.out.println("Last Name: " + lastName);
+//        System.out.println("Username: " + userName);
+//        System.out.println("Date of Birth: " + dob);
+//        System.out.println("Gender: " + gender);
+//        System.out.println("Email: " + email);
+//        System.out.println("phone number: " + phoneNumber);
+//        System.out.println("Address: " + address);
+//        System.out.println("Password: " + password);
 		
 		UserModel userModel = new UserModel(userName, firstName, lastName, dob, gender, email, phoneNumber, address, password);
 		

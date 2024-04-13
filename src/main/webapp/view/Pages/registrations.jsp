@@ -64,7 +64,7 @@
 				<button type="submit" name="Submit">Sign Up</button>
 			</div>
 			<p style="font-size: 14px; text-align: center">
-				Have an account?<a href="login.html">Log In</a>
+				Have an account?<a href="login.jsp">Log In</a>
 				<!-- // TODO need to update to jsp -->
 			</p>
 		</form>
