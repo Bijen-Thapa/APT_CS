@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import com.itDokan.models.ProductModel;
@@ -50,6 +51,7 @@ public class DatabaseController {
 		}
 	}
 	
+//<<<<<<< Updated upstream
 	public int addProduct (ProductModel productModel) {
 		try (Connection con = getConnection()){
 			PreparedStatement st = con.prepareStatement(StringUtil.INSERT_PRODUCT);
@@ -67,4 +69,26 @@ public class DatabaseController {
 			return -1;
 		}
 	}
+//=======
+	
+	public int getUserLoginInfo(String userName, String password) {
+		// TODO Auto-generated method stub
+		
+		try (Connection con = getConnection()) {
+			PreparedStatement st = con.prepareStatement(StringUtil.GET_LOGIN_USER_INFO);
+			st.setString(1, userName);
+			st.setString(2, password);
+			
+			ResultSet rs = st.executeQuery();
+			
+			if (rs.next()) {
+				return 1;
+			} else {
+				return 0;
+			}
+			
+		} catch(SQLException | ClassNotFoundException ex) {
+			ex.printStackTrace();
+		}}
+//>>>>>>> Stashed changes
 }
