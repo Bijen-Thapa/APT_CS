@@ -1,4 +1,5 @@
 package controller;
+package com.itDokan.controllers;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

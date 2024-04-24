@@ -31,7 +31,7 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 form .user_details .input_box {
