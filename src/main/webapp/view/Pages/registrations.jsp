@@ -8,7 +8,7 @@
 <title>Registration</title>
 <link rel="stylesheet" href="../Stylesheet/registration.css" />
 </head>
-<body>   
+<body>
 	<div class="container">
 		<div>
 			<h1>Registration</h1>

@@ -21,7 +21,7 @@ public class DatabaseController {
 
 	public Connection getConnection() throws ClassNotFoundException, SQLException {
 		//Class.forName("com.mysql.jdbc.Driver");
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 
 		String url = "jdbc:mysql://localhost:3306/it_dokan";
 		String user = "root";
@@ -37,16 +37,12 @@ public class DatabaseController {
 			st.setString(1, userModel.getUserName());
 			st.setString(2, userModel.getFirstName());
 			st.setString(3, userModel.getLastName());
-			st.setDate(4, Date.valueOf(userModel.getDob()));
-			st.setString(5, userModel.getGender());
-			st.setString(6, userModel.getEmail());
-			st.setString(7, userModel.getPhoneNumber());
+			st.setString(4, userModel.getGender());
+			st.setDate(5, Date.valueOf(userModel.getDob()));
+			st.setString(6, userModel.getPhoneNumber());
+			st.setString(7, userModel.getEmail());
 			st.setString(8, userModel.getAddress());
-			//st.setString(9, userModel.getPassword());
-			
-			String encryptedPassword = encryptPassword(userModel.getPassword());
-			st.setString(9, encryptedPassword);
-			
+			st.setString(9, userModel.getPassword());
 			
 			int result = st.executeUpdate();
 			return result > 0 ? 1 : 0;
@@ -83,7 +79,7 @@ private String encryptPassword(String password) {
 			PreparedStatement st = con.prepareStatement(StringUtil.INSERT_PRODUCT);
 			
 			st.setString(1, productModel.getName());
-			st.setBlob(2, productModel.getImage());
+//			st.setBlob(2, productModel.getImage());
 			st.setString(3, productModel.getDescription());
 			st.setFloat(4, productModel.getPrice());
 			

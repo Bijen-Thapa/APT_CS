@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.itDokan.controllers.database.DatabaseController;
 import com.itDokan.models.UserModel;
 
-
+import com.itDokan.rest.*;
 
 /**
  * Servlet implementation class RegisterServlet
@@ -56,15 +56,15 @@ public class RegisterServlet extends HttpServlet {
 		String password = request.getParameter("password");
 		String repassword = request.getParameter("repassword");
 		
-		System.out.println("First Name: " + firstName);
-        System.out.println("Last Name: " + lastName);
-        System.out.println("Username: " + userName);
-        System.out.println("Date of Birth: " + dob);
-        System.out.println("Gender: " + gender);
-        System.out.println("Email: " + email);
-        System.out.println("phone number: " + phoneNumber);
-        System.out.println("Address: " + address);
-        System.out.println("Password: " + password);
+//		System.out.println("First Name: " + firstName);
+//        System.out.println("Last Name: " + lastName);
+//        System.out.println("Username: " + userName);
+//        System.out.println("Date of Birth: " + dob);
+//        System.out.println("Gender: " + gender);
+//        System.out.println("Email: " + email);
+//        System.out.println("phone number: " + phoneNumber);
+//        System.out.println("Address: " + address);
+//        System.out.println("Password: " + password);
 		
         //Name format validation
         if (!isValidName(firstName) || !isValidName(lastName)) {
@@ -110,9 +110,14 @@ public class RegisterServlet extends HttpServlet {
 		// TODO Auto-generated method stub
         return !name.matches(".*\\d.*") && !name.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?].*");
 	}
+	
+	
+	private boolean isValidUsername(String username) {
+        // Implement username validation logic
+        return username.length() > 5 && !username.matches(".*[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?].*");
+    }
+
+	
+	
 
 }
-
-
-
-

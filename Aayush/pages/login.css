@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 400px;
+    background: #fff;
+    padding: 25px 35px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.container form .user_details {
+    margin-bottom: 20px;
+}
+
+form .user_details .input_box {
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.user_details .input_box label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.user_details .input_box input[type="text"],
+.user_details .input_box input[type="password"] {
+    height: 40px;
+    width: 100%;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding-left: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.user_details .input_box input[type="text"]:focus,
+.user_details .input_box input[type="password"]:focus {
+    border-color: #54aebc;
+}
+
+.user_details button[type="submit"] {
+    width: 100%;
+    background-color: #4CAF50;
+    height: 40px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.user_details button[type="submit"]:hover {
+    background-color: #b8ccb9;
+}
