@@ -38,14 +38,14 @@ public class LoginServlet extends HttpServlet {
 		System.out.println("USername: " + userName);
 		System.out.println("password: " + password);
 		//int loginResult = dbController.getUserLoginInfo(userName, password);
-		int loginResult = dbController.getUserLoginInfo(userName, password);
-		if (loginResult == 1) {
-			response.sendRedirect(request.getContextPath() + "/Pages/Header.jsp");
-		} else if (loginResult == 0) {
-			
-		}else {
-			
-		}
+//		int loginResult = dbController.getUserLoginInfo(userName, password);
+//		if (loginResult == 1) {
+//			response.sendRedirect(request.getContextPath() + "/Pages/Header.jsp");
+//		} else if (loginResult == 0) {
+//			
+//		}else {
+//			
+//		}
 		
 		
 		

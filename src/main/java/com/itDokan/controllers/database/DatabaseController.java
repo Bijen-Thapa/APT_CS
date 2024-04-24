@@ -19,7 +19,7 @@ public class DatabaseController {
 
 	public Connection getConnection() throws ClassNotFoundException, SQLException {
 		//Class.forName("com.mysql.jdbc.Driver");
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("com.mysql.cj.jdbc.Driver");
 
 		String url = "jdbc:mysql://localhost:3306/it_dokan";
 		String user = "root";
@@ -35,10 +35,10 @@ public class DatabaseController {
 			st.setString(1, userModel.getUserName());
 			st.setString(2, userModel.getFirstName());
 			st.setString(3, userModel.getLastName());
-			st.setDate(4, Date.valueOf(userModel.getDob()));
-			st.setString(5, userModel.getGender());
-			st.setString(6, userModel.getEmail());
-			st.setString(7, userModel.getPhoneNumber());
+			st.setString(4, userModel.getGender());
+			st.setDate(5, Date.valueOf(userModel.getDob()));
+			st.setString(6, userModel.getPhoneNumber());
+			st.setString(7, userModel.getEmail());
 			st.setString(8, userModel.getAddress());
 			st.setString(9, userModel.getPassword());
 			
@@ -57,7 +57,7 @@ public class DatabaseController {
 			PreparedStatement st = con.prepareStatement(StringUtil.INSERT_PRODUCT);
 			
 			st.setString(1, productModel.getName());
-			st.setBlob(2, productModel.getImage());
+//			st.setBlob(2, productModel.getImage());
 			st.setString(3, productModel.getDescription());
 			st.setFloat(4, productModel.getPrice());
 			
@@ -71,24 +71,26 @@ public class DatabaseController {
 	}
 //=======
 	
-	public int getUserLoginInfo(String userName, String password) {
-		// TODO Auto-generated method stub
-		
-		try (Connection con = getConnection()) {
-			PreparedStatement st = con.prepareStatement(StringUtil.GET_LOGIN_USER_INFO);
-			st.setString(1, userName);
-			st.setString(2, password);
-			
-			ResultSet rs = st.executeQuery();
-			
-			if (rs.next()) {
-				return 1;
-			} else {
-				return 0;
-			}
-			
-		} catch(SQLException | ClassNotFoundException ex) {
-			ex.printStackTrace();
-		}}
+//	public int getUserLoginInfo(String userName, String password) {
+//		// TODO Auto-generated method stub
+//		
+//		try (Connection con = getConnection()) {
+//			PreparedStatement st = con.prepareStatement(StringUtil.GET_LOGIN_USER_INFO);
+//			st.setString(1, userName);
+//			st.setString(2, password);
+//			
+//			ResultSet rs = st.executeQuery();
+//			
+//			if (rs.next()) {
+//				return 1;
+//			} else {
+//				return 0;
+//			}
+//			
+//		} catch(SQLException | ClassNotFoundException ex) {
+//			ex.printStackTrace();
+//		}}
 //>>>>>>> Stashed changes
+	
+	
 }

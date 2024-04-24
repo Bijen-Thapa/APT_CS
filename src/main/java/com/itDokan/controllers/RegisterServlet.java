@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.itDokan.controllers.database.DatabaseController;
 import com.itDokan.models.UserModel;
 
-import rest.StringUtil;
+import com.itDokan.rest.*;
 
 /**
  * Servlet implementation class RegisterServlet
@@ -102,17 +102,17 @@ public class RegisterServlet extends HttpServlet {
 		int result = dbController.registerUser(userModel);
 		if(result == 1) {
 			request.setAttribute(StringUtil.SUCCESS_MESSAGE,  StringUtil.SUCCESS_REGISTER_MESSAGE);
-			response.sendRedirect(request.getContextPath() + "/Pages/login.jsp");
+			response.sendRedirect(request.getContextPath() + "/view/Pages/login.jsp");
 		}
 		
 		else if (result == 0) {
 			request.setAttribute(StringUtil.ERROR_MESSAGE,  StringUtil.REGISTER_ERROR_MESSAGE);
-			response.sendRedirect(request.getContextPath() + "/Pages/registrations.jsp");
+			response.sendRedirect(request.getContextPath() + "/view/Pages/registrations.jsp");
 		}
 		
 		else {
 			request.setAttribute(StringUtil.ERROR_MESSAGE,  StringUtil.SERVER_ERROR_MESSAGE);
-			response.sendRedirect(request.getContextPath() + "/Pages/registrations.jsp");
+			response.sendRedirect(request.getContextPath() + "/view/Pages/registrations.jsp");
 			
 		}
 		

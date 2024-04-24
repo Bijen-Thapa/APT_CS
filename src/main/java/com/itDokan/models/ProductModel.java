@@ -1,6 +1,6 @@
 package com.itDokan.models;
 
-import com.mysql.cj.jdbc.Blob;
+import java.sql.Blob;
 
 public class ProductModel {
 

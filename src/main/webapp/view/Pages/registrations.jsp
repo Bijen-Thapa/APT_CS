@@ -14,7 +14,7 @@
 			<h1>Registration</h1>
 		</div>
 
-		<form action="../RegisterServlet" method="post">
+		<form action="../../RegisterServlet" method="post">
 			<div class="user_details">
 				<div class="input_box">
 					<label for="fname">First name:</label> <input type="text" id="name"
