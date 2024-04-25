@@ -1,117 +1,19 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ecommerce</title>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
     <!-- Header section start -->
-    <header class="flex justify-between px-10 py-4 bg-black font-mono text-white max-sm:hidden">
-        <div class="flex ">
-            <p>Need help?</p>
-            <p>01-5350440 | </p>
-            <p>Contact</p>
-        </div>
-        <div class="max-md:hidden">
-            <p>Hello world</p>
-        </div>
-        <div>
-            <ul class="flex">
-                <li class="mx-2">
-                    My Account
-                </li>
-                <li class="mx-2">
-                    Sign in
-                </li>
-            </ul>
-        </div>
-    </header>
-    <!-- Header section end -->
-
-    <!-- Nav section start -->
-    <nav class="max-sm:flex max-sm:justify-between max-sm:items-center">
-        <div class="flex justify-around items-center">
-            <div class="w-20">
-                <a href="index.html"><img class="" src="images/itDokan.svg" alt=""></a>
-            </div>
-            <div class="flex items-center flex-1 sm:max-w-[300px] md:max-w-[500px] max-sm:hidden">
-                <input class="border-solid border-2 relative h-10 flex-1 p-2 w-0 max-sm:ml-3" type="text" placeholder="Search">
-                <button class="bg-red-500 p-2 w-[40px] text-center rounded max-sm:mr-3">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-            </div>
-            <div>
-                <ul class="flex max-sm:hidden items-center">
-                    <li class="m-2 hover:text-red-500"><a href=""><i class="fa-solid fa-cart-shopping mr-2"></i>Cart</a></li>
-                    <li class="m-2 hover:text-red-500"><a href=""><i class="fa-regular fa-heart mr-2"></i>WishList</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="flex justify-end relative">
-            <button class="w-8 h-8 hidden max-sm:block" id="hamburger" onclick="toggleDropdown()"><img src="images/bars-solid.svg" alt=""></button>
-        </div>
-    </nav>
-    <div class="absolute top-15 z-10 w-full" id="dropdownBtn">
-        <ul id="dropdown" class="rounded border-gray-300 bg-white shadow-md hidden">
-            <li class="cursor-pointer hover:bg-gray-300 p-4">Laptop by Brands</li>
-            <li class="cursor-pointer hover:bg-gray-300 p-4">Gaming </li>
-            <li class="cursor-pointer hover:bg-gray-300 p-4"> Products</li>
-            <li class="cursor-pointer hover:bg-gray-300 p-4"> Sign out</li>
-            <li class="cursor-pointer hover:bg-gray-300 p-4">Account Settings</li>
-        </ul>
-    </div>
-    <!-- Nav section end -->
-
-    <div class="flex py-2 bg-black max-sm:hidden">
-        <div class="relative group" id="dropdownBtn">
-            <div class=" px-5 py-2 rounded font-bold text-white">
-                <a href="">
-                    Laptop By Brands
-                </a>
-            </div>
-            <div id="dropdown" class="rounded border-gray-300 bg-white absolute top-10 w-[400px] hidden z-10 group-hover:block">
-                <div class="cursor-pointer hover:bg-gray-300 p-4">Account Settings</div>
-                <div class="cursor-pointer hover:bg-gray-300 p-4">Support </div>
-                <div class="cursor-pointer hover:bg-gray-300 p-4"> License</div>
-                <div class="cursor-pointer hover:bg-gray-300 p-4"> Sign out</div>
-                <div class="cursor-pointer hover:bg-gray-300 p-4">Account Settings</div>
-            </div>
-        </div>
-        <div class="relative group" id="dropdownBtn">
-            <div class=" px-5 py-2 rounded font-bold text-white">
-                <a href="">
-                    Gaming
-                </a>
-            </div>
-            <div id="dropdown" class="rounded border-gray-300 bg-white absolute top-10 w-[400px] hidden z-10 group-hover:block">
-                <div class="cursor-pointer hover:bg-gray-300 p-4">Gaming Laptop</div>
-                <div class="cursor-pointer hover:bg-gray-300 p-4">Gaming Mouse </div>
-                <div class="cursor-pointer hover:bg-gray-300 p-4"> Gaming Desktop</div>
-                <div class="cursor-pointer hover:bg-gray-300 p-4"> Gaming Headphone</div>
-                <div class="cursor-pointer hover:bg-gray-300 p-4">Gaming Keyboard</div>
-            </div>
-        </div>
-        <div class="relative group" id="dropdownBtn">
-            <div class=" px-5 py-2 rounded font-bold text-white">
-                <a href="product.html">
-                    Products
-                </a>
-            </div>
-            <div id="dropdown" class="rounded border-gray-300 bg-white absolute top-10 w-[400px] hidden z-10 group-hover:block">
-                <div class="cursor-pointer hover:bg-gray-300 p-4">Account Settings</div>
-                <div class="cursor-pointer hover:bg-gray-300 p-4">Support </div>
-                <div class="cursor-pointer hover:bg-gray-300 p-4"> License</div>
-                <div class="cursor-pointer hover:bg-gray-300 p-4"> Sign out</div>
-                <div class="cursor-pointer hover:bg-gray-300 p-4">Account Settings</div>
-            </div>
-        </div>
-    </div>
+	<jsp:include page="header.jsp" />
     
     <!-- main section start -->
-    <main class="relative ">
+    <main class="relative">
         <!-- Deal of the week start -->
         <section class="padding">
             <h2 class="text-3xl text-center font-mono">Deal of The Week</h2>
@@ -289,98 +191,8 @@
     </main>
     <!-- main section end -->
 
+	<jsp:include page="footer.jsp" />
 
-    <!-- footer section start -->
-    <footer class="flex max-sm:flex max-sm:flex-col max-md:grid max-md:grid-cols-2  justify-around padding bg-black padding-x padding-t pb-8 text-white">
-        <div class="mb-8 md:mb-0 md:mr-8 max-md:mt-6">
-            <ul class="flex flex-col">
-                <li class="mb-4">
-                    <img src="" alt="image isn't fixed now.">
-                </li>
-                <li class="mb-2">
-                    <p>Support</p>
-                </li>
-                <li class="mb-2">
-                    <p>sales@itti.com.np</p>
-                </li>
-                <li class="mb-2">
-                    <p>01-5350440 / 01-5911594</p>
-                </li>
-            </ul>
-            <button class="bg-black rounded p-2 border-solid border-2 w-30 hover:bg-red-600">
-                <i class="fa-solid fa-location-dot mr-2"></i>Find out store
-            </button>
-        </div>
-        <div class="mb-8 md:mb-0 max-md:mt-6">
-            <ul class="flex flex-col">
-                <li class="mb-4 md:mb-2">
-                    <h3>ITTI Categories</h3>
-                </li>
-                <li class="mb-2 hover:text-red-500">
-                    <a href="">Gaming</a>
-                </li>
-                <li class="mb-2 hover:text-red-500">
-                    <a href="">Desktip & Server</a>
-                </li>
-                <li class="mb-2 hover:text-red-500">
-                    <a href="">Monitors</a>
-                </li>
-                <li class="hover:text-red-500">
-                    <a href="">Accessories</a>
-                </li>
-            </ul>
-        </div>
-        <div class="mb-8 md:mb-0 max-md:mt-6">
-            <ul class="flex flex-col">
-                <li class="mb-4 md:mb-2">
-                    <h3>About ITTI</h3>
-                </li>
-                <li class="mb-2 hover:text-red-500">
-                    <a href="">About ITTI</a>
-                </li>
-                <li class="mb-2 hover:text-red-500">
-                    <a href="">Terms & Conditions</a>
-                </li>
-                <li class="mb-2 hover:text-red-500">
-                    <a href="">Warranty</a>
-                </li>
-                <li class="mb-2 hover:text-red-500">
-                    <a href="">Trivacy Policy</a>
-                </li>
-                <li class=" hover:text-red-500">
-                    <a href="">Blog</a>
-                </li>
-            </ul>
-        </div>
-        <div class="mb-8 md:mb-0 max-md:mt-6">
-            <ul class="flex flex-col">
-                <li class="mb-4 md:mb-2">
-                    <h3>Customer Service</h3>
-                </li>
-                <li class="mb-2 hover:text-red-500">
-                    <a href="">Refund & Return Policy</a>
-                </li>
-                <li class="mb-2 hover:text-red-500">
-                    <a href="">My Account</a>
-                </li>
-                <li class="mb-2 hover:text-red-500">
-                    <a href="">Contact Us</a>
-                </li>
-            </ul>
-        </div>
-    </footer>
-    <!-- footer section end -->
-
-    <!-- footer section for mobile devices or devices width less then 640px -->
-    <div class="w-full bg-white py-5 px-2 border-solid border-2 hidden max-sm:block sticky bottom-0 ">
-        <ul class="flex justify-between">
-            <li><a class="flex flex-col items-center" href=""><i class="fa-solid fa-house"></i>Home</a></li>
-            <li><a class="flex flex-col items-center" href=""><i class="fa-solid fa-magnifying-glass"></i>Search</a></li>
-            <li><a class="flex flex-col items-center" href=""><i class="fa-solid fa-desktop"></i>CustomPc</a></li>
-            <li><a class="flex flex-col items-center" href=""><i class="fa-solid fa-cart-shopping mr-2"></i>Cart</a></li>
-            <li><a class="flex flex-col items-center" href=""><i class="fa-solid fa-user"></i>Account</a></li>
-        </ul>
-    </div>
 </body>
 <script>
     function toggleDropdown(){

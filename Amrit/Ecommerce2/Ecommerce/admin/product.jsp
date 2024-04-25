@@ -1,3 +1,25 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+	<%
+	String id = request.getParameter("userid");
+	String driver = "com.mysql.jdbc.Driver";
+	String connectionUrl = "jdbc:mysql://localhost:3306/";
+	String database = "test";
+	String userid = "root";
+	String password = "";
+	try {
+	Class.forName(driver);
+	} catch (ClassNotFoundException e) {
+	e.printStackTrace();
+	}
+	Connection connection = null;
+	Statement statement = null;
+	ResultSet resultSet = null;
+	%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -55,7 +77,7 @@
                 <i class="fas fa-calendar mr-3"></i>
                 Calendar
             </a>
-            <a href="product.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="product.jsp" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-calendar mr-3"></i>
                 Product
             </a>
@@ -146,61 +168,103 @@
     
                 <div class="w-full mt-12">
                     <p class="text-xl pb-3 flex items-center">
+                        <i class="fas fa-list mr-3"></i> Input Form
+                    </p>
+                    <div class="bg-white overflow-auto">
+                    <form action="../../../ProductServlet" method="post">
+	                    <table class="min-w-full bg-white">
+	                            <thead class="bg-gray-800 text-white">
+	                                <tr>
+	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Product ID</th>
+	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
+	                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Image</th>
+	                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Description</th>
+	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Quantity</th>
+	                                 	<th class="text-left py-3 px-4 uppercase font-semibold text-sm">Price</th>
+	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Action</th>
+	                                    
+	                                </tr>
+	                            </thead>
+	                            <tbody class="text-gray-700">
+	                                <tr>
+	                                    <td class="text-left py-2 px-4"><input class="py-2 px-2" id="product_id" name="product_id" type="text" placeholder="product id"></td> 
+	                                    <!-- yeso type le ailey samma kei farak parey xaina -->
+	                                    <td class="text-left py-2 px-4"><input class="py-2 px-2" id="name" name="name" type="text" placeholder="item name"></td>
+	                                    <td class="w-1/3 text-left py-2 px-4"><input class="py-2 px-2" id="img" name="img" type="text" placeholder="test for now"></td>
+	                                    <td class="w-1/3 text-left py-2 px-4"><input class="py-2 px-2" id="description" name="description" type="text" placeholder="Something about product"></td>
+	                                    <td class="text-left py-2 px-4"><input class="py-2 px-2" id="quantity" name="quantity" type="number" placeholder="1"></td>
+	                                    <td class="text-left py-2 px-4"><input class="py-2 px-2" id="price" name="price" type="number" placeholder="10"></td>
+	                                    <td><button class="py-2 px-4 bg-green-400 text-white" type="submit">Add</button></td>
+	                                </tr>
+	                            </tbody>
+	                        </table>
+                    </form>
+   
+                    </div>
+                </div>
+                <div class="w-full mt-12">
+                    <p class="text-xl pb-3 flex items-center">
                         <i class="fas fa-list mr-3"></i> Latest Reports
                     </p>
                     <div class="bg-white overflow-auto">
-                        <table class="min-w-full bg-white">
-                            <thead class="bg-gray-800 text-white">
-                                <tr>
-                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Product ID</th>
-                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
-                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Image</th>
-                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Description</th>
-                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Quantity</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-gray-700">
-                                <tr>
-                                    <td class="text-left py-2 px-4"><input class="py-2 px-2" id="product_id" name="product_id" type="text" placeholder="product id"></td>
-                                    <td class="text-left py-2 px-4"><input class="py-2 px-2" id="name" name="name" type="text" placeholder="item name"></td>
-                                    <td class="w-1/3 text-left py-2 px-4"><input class="py-2 px-2" id="img" name="img" type="text" placeholder="test for now"></td>
-                                    <td class="w-1/3 text-left py-2 px-4"><input class="py-2 px-2" id="description" name="description" type="text" placeholder="Something about product"></td>
-                                    <td class="text-left py-2 px-4"><input class="py-2 px-2" id="quantity" name="quantity" type="number" placeholder="1"></td>
-                                </tr>
-                                <!-- <tr class="bg-gray-200">
-                                    <td class="text-left py-3 px-4">2</td>
-                                    <td class="text-left py-3 px-4">Earbud</td>
-                                    <td class="w-1/3 text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="w-1/3 text-left py-3 px-4">Write something about this product.</td>
-                                    <td class="text-left py-3 px-4"><input class="" type="number" placeholder="1"></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-left py-3 px-4">3</td>
-                                    <td class="text-left py-3 px-4">Mouse</td>
-                                    <td class="w-1/3 text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="w-1/3 text-left py-3 px-4">Write something about this product.</td>
-                                    <td class="text-left py-3 px-4"><input class="" type="number" placeholder="1"></td>
-                                </tr>
-                                <tr class="bg-gray-200">
-                                    <td class="text-left py-3 px-4">4</td>
-                                    <td class="text-left py-3 px-4">Keyboard</td>
-                                    <td class="w-1/3 text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="w-1/3 text-left py-3 px-4">Write something about this product.</td>
-                                    <td class="text-left py-3 px-4"><input class="" type="number" placeholder="1"></td>
-                                </tr>
-                                <tr>
-                                    <td class="text-left py-3 px-4">5</td>
-                                    <td class="text-left py-3 px-4">Brown</td>
-                                    <td class="w-1/3 text-left py-3 px-4"><a class="hover:text-blue-500" href="tel:622322662">622322662</a></td>
-                                    <td class="w-1/3 text-left py-3 px-4">Write something about this product.</td>
-                                    <td class="text-left py-3 px-4"><input class="" type="number" placeholder="1"></td>
-                                </tr> -->
-                            </tbody>
-                        </table>
+                    <form action="../../../ProductServlet" method="post">
+	                    <table class="min-w-full bg-white">
+	                            <thead class="bg-gray-800 text-white">
+	                                <tr>
+	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Product ID</th>
+	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
+	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Image</th>
+	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Description</th>
+	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Quantity</th>
+	                                 	<th class="text-left py-3 px-4 uppercase font-semibold text-sm">Price</th>
+	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Action</th>
+	                                </tr>
+	                                
+	                            </thead>
+	                            <tbody class="text-gray-700">
+	                            		<%	
+										try{
+										connection = DriverManager.getConnection(connectionUrl+database, userid, password);
+										statement=connection.createStatement();
+										String sql ="select * from product";
+										resultSet = statement.executeQuery(sql);
+										while(resultSet.next()){
+										%>
+	                            	<tr>
+										<td class= "text-left py-3 px-4 uppercase font-semibold text-sm"><%=resultSet.getString("product_id") %></td>
+										<td class= "text-left py-3 px-4 uppercase font-semibold text-sm"><%=resultSet.getString("name") %></td>
+										<td class= "text-left py-3 px-2 uppercase font-semibold text-sm"><%=resultSet.getString("img") %></td>
+										<td class= "text-left py-3 px-2 uppercase font-semibold text-sm"><%=resultSet.getString("description") %></td>
+										<td class= "text-left py-3 px-4 uppercase font-semibold text-sm"><%=resultSet.getString("Quantity") %></td>
+										<td class= "text-left py-3 px-4 uppercase font-semibold text-sm"><%=resultSet.getString("Price") %></td>
+										<td>
+											<button class="bg-green-500 py-2 px-3 rounded text-white">
+										        Edit
+										    </button>
+										    <button class="bg-red-500 py-2 px-3 rounded text-white">
+										        Delete
+										    </button>
+										</td>
+									</tr>
+	                                	<%
+										}
+										connection.close();
+										} catch (Exception e) {
+										e.printStackTrace();
+										}
+										%>
+	                            </tbody>
+	                            <tbody class="text-gray-700">
+	                                <tr>
+	                                    <td></td>
+	                                </tr>
+	                            </tbody>
+	                        </table>
+                    </form>
+   
                     </div>
                 </div>
             </main>
-
         </div>
         
     </div>
