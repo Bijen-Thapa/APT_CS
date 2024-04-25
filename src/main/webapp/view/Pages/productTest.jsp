@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%@ include file="admin_nav.jsp" %>
 	<form action="../AddProductServlet" method="post">
 		<div class="input_box">
 			<label for="name"> name:</label> <input type="text" id="name"
