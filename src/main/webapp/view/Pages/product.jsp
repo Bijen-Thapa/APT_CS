@@ -1,12 +1,13 @@
+<%@page import="com.itDokan.controllers.database.DatabaseController"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="UTF-8"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
 	<%
 	String id = request.getParameter("userid");
-	String driver = "com.mysql.cj.jdbc.Driver";
+	String driver = "com.mysql.jdbc.Driver";
 	String connectionUrl = "jdbc:mysql://localhost:3306/";
 	String database = "test";
 	String userid = "root";
@@ -25,334 +26,442 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind Admin Template</title>
-    <meta name="author" content="David Grzyb">
-    <meta name="description" content="">
-
-    <!-- Tailwind -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
-        .font-family-karla { font-family: karla; }
-        .bg-sidebar { background: #3d68ff; }
-        .cta-btn { color: #3d68ff; }
-        .upgrade-btn { background: #1947ee; }
-        .upgrade-btn:hover { background: #0038fd; }
-        .active-nav-link { background: #1947ee; }
-        .nav-item:hover { background: #1947ee; }
-        .account-link:hover { background: #3d68ff; }
-    </style>
+    <title>Document</title>
+    <link rel="stylesheet" href="../Stylesheet/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
-<body class="bg-gray-100 font-family-karla flex">
-
-    <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
-        <div class="p-6">
-            <a href="index.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
-            <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                <i class="fas fa-plus mr-3"></i> New Report 
-<!--                 TODO need to add the report function -->
-            </button>
-        </div>
-        <nav class="text-white text-base font-semibold pt-3">
-            <a href="index.html" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
-                <i class="fas fa-tachometer-alt mr-3"></i>
-                Dashboard
-            </a>
-            <a href="product.jsp" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                <i class="fas fa-calendar mr-3"></i>
-                Product
-            </a>
-            <a href="blank.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                <i class="fas fa-sticky-note mr-3"></i>
-                Blank Page
-            </a>
-            <a href="tables.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                <i class="fas fa-table mr-3"></i>
-                Tables
-            </a>
-            <a href="forms.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                <i class="fas fa-align-left mr-3"></i>
-                Forms
-            </a>
-            <a href="tabs.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                <i class="fas fa-tablet-alt mr-3"></i>
-                Tabbed Content
-            </a>
-            <a href="calendar.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
-                <i class="fas fa-calendar mr-3"></i>
-                Calendar
-            </a>
+<body >
+        <!-- Header section start -->
+        <header class="flex justify-between px-10 py-4 bg-black font-mono text-white max-sm:hidden">
+            <div class="flex ">
+                <p>Need help?</p>
+                <p>01-5350440 | </p>
+                <p>Contact</p>
+            </div>
+            <div class="max-md:hidden">
+                <p>Hello world</p>
+            </div>
+            <div>
+                <ul class="flex">
+                    <li class="mx-2">
+                        My Account
+                    </li>
+                    <li class="mx-2">
+                        Sign in
+                    </li>
+                </ul>
+            </div>
+        </header>
+        <!-- Header section end -->
+    
+        <!-- Nav section start -->
+        <nav class="max-sm:flex max-sm:justify-between max-sm:items-center">
+            <div class="flex justify-around items-center">
+                <div class="w-20">
+                    <a href="index.html"><img class="" src="images/itDokan.svg" alt=""></a>
+                </div>
+                <div class="flex items-center flex-1 sm:max-w-[300px] md:max-w-[500px] max-sm:hidden">
+                    <input class="border-solid border-2 relative h-10 flex-1 p-2 w-0 max-sm:ml-3" type="text" placeholder="Search">
+                    <button class="bg-red-500 p-2 w-[40px] text-center rounded max-sm:mr-3">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                </div>
+                <div>
+                    <ul class="flex max-sm:hidden items-center">
+                        <li class="m-2 hover:text-red-500"><a href=""><i class="fa-solid fa-cart-shopping mr-2"></i>Cart</a></li>
+                        <li class="m-2 hover:text-red-500"><a href=""><i class="fa-regular fa-heart mr-2"></i>WishList</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="flex justify-end relative">
+                <button class="w-8 h-8 hidden max-sm:block" id="hamburger" onclick="toggleDropdown()"><img src="images/bars-solid.svg" alt=""></button>
+            </div>
         </nav>
-<!--         <a href="#" class="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4"> -->
-<!--             <i class="fas fa-arrow-circle-up mr-3"></i> -->
-<!--             Upgrade to Pro! -->
-<!--         </a> -->
-    </aside>
-
-    <div class="w-full flex flex-col h-screen overflow-y-hidden">
-        <!-- Desktop Header -->
-        <header class="w-full items-center bg-white py-2 px-6 hidden sm:flex">
-            <div class="w-1/2"></div>
-            <div x-data="{ isOpen: false }" class="relative w-1/2 flex justify-end">
-                <button @click="isOpen = !isOpen" class="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none">
-                    <img src="https://source.unsplash.com/uJ8LNVCBjFQ/400x400">
-                </button>
-                <button x-show="isOpen" @click="isOpen = false" class="h-full w-full fixed inset-0 cursor-default"></button>
-                <div x-show="isOpen" class="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
-                    <a href="#" class="block px-4 py-2 account-link hover:text-white">Account</a>
-                    <a href="#" class="block px-4 py-2 account-link hover:text-white">Support</a>
-                    <a href="#" class="block px-4 py-2 account-link hover:text-white">Sign Out</a>
+        <div class="absolute top-15 z-10 w-full" id="dropdownBtn">
+            <ul id="dropdown" class="rounded border-gray-300 bg-white shadow-md hidden">
+                <li class="cursor-pointer hover:bg-gray-300 p-4">Laptop by Brands</li>
+                <li class="cursor-pointer hover:bg-gray-300 p-4">Gaming </li>
+                <li class="cursor-pointer hover:bg-gray-300 p-4"> Products</li>
+                <li class="cursor-pointer hover:bg-gray-300 p-4"> Sign out</li>
+                <li class="cursor-pointer hover:bg-gray-300 p-4">Account Settings</li>
+            </ul>
+        </div>
+        <!-- Nav section end -->
+    
+        <div class="flex py-2 bg-black max-sm:hidden">
+            <div class="relative group" id="dropdownBtn">
+                <div class=" px-5 py-2 rounded font-bold text-white">
+                    <a href="">
+                        Laptop By Brands
+                    </a>
+                </div>
+                <div id="dropdown" class="rounded border-gray-300 bg-white absolute top-10 w-[400px] hidden z-10 group-hover:block">
+                    <div class="cursor-pointer hover:bg-gray-300 p-4">Account Settings</div>
+                    <div class="cursor-pointer hover:bg-gray-300 p-4">Support </div>
+                    <div class="cursor-pointer hover:bg-gray-300 p-4"> License</div>
+                    <div class="cursor-pointer hover:bg-gray-300 p-4"> Sign out</div>
+                    <div class="cursor-pointer hover:bg-gray-300 p-4">Account Settings</div>
                 </div>
             </div>
-        </header>
-
-        <!-- Mobile Header & Nav -->
-        <header x-data="{ isOpen: false }" class="w-full bg-sidebar py-5 px-6 sm:hidden">
-            <div class="flex items-center justify-between">
-                <a href="index.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
-                <button @click="isOpen = !isOpen" class="text-white text-3xl focus:outline-none">
-                    <i x-show="!isOpen" class="fas fa-bars"></i>
-                    <i x-show="isOpen" class="fas fa-times"></i>
-                </button>
+            <div class="relative group" id="dropdownBtn">
+                <div class=" px-5 py-2 rounded font-bold text-white">
+                    <a href="">
+                        Gaming
+                    </a>
+                </div>
+                <div id="dropdown" class="rounded border-gray-300 bg-white absolute top-10 w-[400px] hidden z-10 group-hover:block">
+                    <div class="cursor-pointer hover:bg-gray-300 p-4">Gaming Laptop</div>
+                    <div class="cursor-pointer hover:bg-gray-300 p-4">Gaming Mouse </div>
+                    <div class="cursor-pointer hover:bg-gray-300 p-4"> Gaming Desktop</div>
+                    <div class="cursor-pointer hover:bg-gray-300 p-4"> Gaming Headphone</div>
+                    <div class="cursor-pointer hover:bg-gray-300 p-4">Gaming Keyboard</div>
+                </div>
             </div>
-
-            <!-- Dropdown Nav -->
-            <nav :class="isOpen ? 'flex': 'hidden'" class="flex flex-col pt-4">
-                <a href="index.html" class="flex items-center active-nav-link text-white py-2 pl-4 nav-item">
-                    <i class="fas fa-tachometer-alt mr-3"></i>
-                    Dashboard
-                </a>
-                <a href="blank.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-sticky-note mr-3"></i>
-                    Blank Page
-                </a>
-                <a href="tables.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-table mr-3"></i>
-                    Tables
-                </a>
-                <a href="forms.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-align-left mr-3"></i>
-                    Forms
-                </a>
-                <a href="tabs.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-tablet-alt mr-3"></i>
-                    Tabbed Content
-                </a>
-                <a href="calendar.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-calendar mr-3"></i>
-                    Calendar
-                </a>
-                <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-cogs mr-3"></i>
-                    Support
-                </a>
-                <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-user mr-3"></i>
-                    My Account
-                </a>
-                <a href="#" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
-                    <i class="fas fa-sign-out-alt mr-3"></i>
-                    Sign Out
-                </a>
-                <button class="w-full bg-white cta-btn font-semibold py-2 mt-3 rounded-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                    <i class="fas fa-arrow-circle-up mr-3"></i> Upgrade to Pro!
-                </button>
-            </nav>
-            <!-- <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-                <i class="fas fa-plus mr-3"></i> New Report
-            </button> -->
-        </header>
-    
-        <div class="w-full overflow-x-hidden border-t flex flex-col">
-            <main class="w-full flex-grow p-6">
-                <h1 class="text-3xl text-black pb-6">Product</h1>
-    
-                <div class="w-full mt-12">
-                    <p class="text-xl pb-3 flex items-center">
-                        <i class="fas fa-list mr-3"></i> Input Form
-                    </p>
-                    <div class="bg-white overflow-auto">
-                    <form action="../../../ProductServlet" method="post">
-	                    <table class="min-w-full bg-white">
-	                            <thead class="bg-gray-800 text-white">
-	                                <tr>
-	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Product ID</th>
-	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
-	                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Image</th>
-	                                    <th class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Description</th>
-	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Quantity</th>
-	                                 	<th class="text-left py-3 px-4 uppercase font-semibold text-sm">Price</th>
-	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Action</th>
-	                                    
-	                                </tr>
-	                            </thead>
-	                            <tbody class="text-gray-700">
-	                                <tr>
-	                                    <td class="text-left py-2 px-4"><input class="py-2 px-2" id="product_id" name="product_id" type="text" placeholder="product id"></td> 
-	                                    <!-- yeso type le ailey samma kei farak parey xaina -->
-	                                    <td class="text-left py-2 px-4"><input class="py-2 px-2" id="name" name="name" type="text" placeholder="item name"></td>
-	                                    <td class="w-1/3 text-left py-2 px-4"><input class="py-2 px-2" id="img" name="img" type="text" placeholder="test for now"></td>
-	                                    <td class="w-1/3 text-left py-2 px-4"><input class="py-2 px-2" id="description" name="description" type="text" placeholder="Something about product"></td>
-	                                    <td class="text-left py-2 px-4"><input class="py-2 px-2" id="quantity" name="quantity" type="number" placeholder="1"></td>
-	                                    <td class="text-left py-2 px-4"><input class="py-2 px-2" id="price" name="price" type="number" placeholder="10"></td>
-	                                    <td><button class="py-2 px-4 bg-green-400 text-white" type="submit">Add</button></td>
-	                                </tr>
-	                            </tbody>
-	                        </table>
-                    </form>
-   
-                    </div>
+            <div class="relative group" id="dropdownBtn">
+                <div class=" px-5 py-2 rounded font-bold text-white">
+                    <a href="product.html">
+                        Products
+                    </a>
                 </div>
-                <div class="w-full mt-12">
-                    <p class="text-xl pb-3 flex items-center">
-                        <i class="fas fa-list mr-3"></i> Latest Reports
-                    </p>
-                    <div class="bg-white overflow-auto">
-                    <form action="../../../ProductServlet" method="post">
-	                    <table class="min-w-full bg-white">
-	                            <thead class="bg-gray-800 text-white">
-	                                <tr>
-	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Product ID</th>
-	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
-	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Image</th>
-	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Description</th>
-	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Quantity</th>
-	                                 	<th class="text-left py-3 px-4 uppercase font-semibold text-sm">Price</th>
-	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Action</th>
-	                                </tr>
-	                                
-	                            </thead>
-	                            <tbody class="text-gray-700">
-	                            		<%	
-										try{
-										connection = DriverManager.getConnection(connectionUrl+database, userid, password);
-										statement=connection.createStatement();
-										String sql ="select * from product";
-										resultSet = statement.executeQuery(sql);
-										while(resultSet.next()){
-										%>
-	                            	<tr>
-										<td class= "text-left py-3 px-4 uppercase font-semibold text-sm"><%=resultSet.getString("product_id") %></td>
-										<td class= "text-left py-3 px-4 uppercase font-semibold text-sm"><%=resultSet.getString("name") %></td>
-										<td class= "text-left py-3 px-2 uppercase font-semibold text-sm"><%=resultSet.getString("img") %></td>
-										<td class= "text-left py-3 px-2 uppercase font-semibold text-sm"><%=resultSet.getString("description") %></td>
-										<td class= "text-left py-3 px-4 uppercase font-semibold text-sm"><%=resultSet.getString("Quantity") %></td>
-										<td class= "text-left py-3 px-4 uppercase font-semibold text-sm"><%=resultSet.getString("Price") %></td>
-										<td>
-											<button class="bg-green-500 py-2 px-3 rounded text-white">
-										        Edit
-										    </button>
-										    <button class="bg-red-500 py-2 px-3 rounded text-white">
-										        Delete
-										    </button>
-										</td>
-									</tr>
-	                                	<%
-										}
-										connection.close();
-										} catch (Exception e) {
-										e.printStackTrace();
-										}
-										%>
-	                            </tbody>
-	                            <tbody class="text-gray-700">
-	                                <tr>
-	                                    <td></td>
-	                                </tr>
-	                            </tbody>
-	                        </table>
-                    </form>
-   
-                    </div>
+                <div id="dropdown" class="rounded border-gray-300 bg-white absolute top-10 w-[400px] hidden z-10 group-hover:block">
+                    <div class="cursor-pointer hover:bg-gray-300 p-4">Account Settings</div>
+                    <div class="cursor-pointer hover:bg-gray-300 p-4">Support </div>
+                    <div class="cursor-pointer hover:bg-gray-300 p-4"> License</div>
+                    <div class="cursor-pointer hover:bg-gray-300 p-4"> Sign out</div>
+                    <div class="cursor-pointer hover:bg-gray-300 p-4">Account Settings</div>
                 </div>
-            </main>
+            </div>
         </div>
         
-    </div>
+        <!-- <div class="bg-gray-200 flex justify-center items-center h-screen">
+            <div class="relative" id="dropdownBtn">
+                <div onclick="toggleDropdown()" class="border-solid border-gray-400 border-2 px-5 py-2 rounded cursor-pointer font-bold
+                    flex justify-between w-[200px] bg-white shadow-sm">
+                    Options
+                    <img class="w-3" src="images/arrow-down-svgrepo-com.svg" alt="">
+                </div>
+                <div id="dropdown" class="rounded border-gray-300 bg-white absolute top-12 w-[400px] shadow-md hidden">
+                    <div class="cursor-pointer hover:bg-gray-300 p-4">Account Settings</div>
+                    <div class="cursor-pointer hover:bg-gray-300 p-4">Support </div>
+                    <div class="cursor-pointer hover:bg-gray-300 p-4"> License</div>
+                    <div class="cursor-pointer hover:bg-gray-300 p-4"> Sign out</div>
+                    <div class="cursor-pointer hover:bg-gray-300 p-4">Account Settings</div>
+                </div>
+            </div>
+        </div> -->
+        <!-- <div class="w-full bg-white py-5 border-solid border-2">
+            <ul class="flex justify-between">
+                <li><a class="flex flex-col items-center" href=""><i class="fa-solid fa-house"></i>Home</a></li>
+                <li><a class="flex flex-col items-center" href=""><i class="fa-solid fa-magnifying-glass"></i>Search</a></li>
+                <li><a class="flex flex-col items-center" href=""><i class="fa-solid fa-desktop"></i>CustomPc</a></li>
+                <li><a class="flex flex-col items-center" href=""><i class="fa-solid fa-cart-shopping mr-2"></i>Cart</a></li>
+                <li><a class="flex flex-col items-center" href=""><i class="fa-solid fa-user"></i>Account</a></li>
+            </ul>
+        </div> -->
 
-    <!-- AlpineJS -->
-    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-    <!-- Font Awesome -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" integrity="sha256-KzZiKy0DWYsnwMF+X1DvQngQ2/FxF7MF3Ff72XcpuPs=" crossorigin="anonymous"></script>
-    <!-- ChartJS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+        <!-- Laptop section start -->
+        <section class="padding-x sm:py-12 w-full">
+            <h2 class="text-3xl text-center font-mono">Laptop</h2>
+            
+     		
+            <div class="sm:grid sm:grid-cols-2 sm:grid-rows-1 xl:grid xl:grid-cols-4 xl:grid-rows-1 gap-3 mt-8">
+            <%	
+			try{
+				DatabaseController dbcon = new DatabaseController();
+			Connection con = dbcon.getConnection();
+			Statement st =con.createStatement();
+			String sql ="select * from product";
+			resultSet = st.executeQuery(sql);
+			while(resultSet.next()){
+			%>
+                <div class="max-sm:mx-auto flex flex-col items-center max-lg:flex max-lg:flex-col max-lg:w-[240px] max-lg:mx-auto">
+                    <div class="w-[240px] relative">
+                        <img src="..\<%= resultSet.getString("image") %>" alt="<%= resultSet.getString("name") %>">
+                        <i class="fa-regular fa-heart mr-2 absolute top-2 right-1 text-white hover:text-red-500"></i>
+                    </div>
+                    <div class="py-5">
+                        <p class="text-base mb-5 font-extrabold"><%=resultSet.getString("name") %></p>
+                        <p class="text-xl">
+                            <%=resultSet.getString("description") %>
+                        </p>
+                        <p>Available quantity: <%=resultSet.getString("qty") %></p>
+                        <P class="text-xl">Rs <%=resultSet.getString("price") %></P>
+                    </div>
+                </div>
+                <%
+			}
+			connection.close();
+			} catch (Exception e) {
+			e.printStackTrace();
+			}
+			%>
+            </div>
+            
+        </section>
+        <!-- Laptop section end -->
 
-    <script>
-        var chartOne = document.getElementById('chartOne');
-        var myChart = new Chart(chartOne, {
-            type: 'bar',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
 
-        var chartTwo = document.getElementById('chartTwo');
-        var myLineChart = new Chart(chartTwo, {
-            type: 'line',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        }
-                    }]
-                }
-            }
-        });
-    </script>
+        <!-- Accessories section start -->
+        <section class="padding-x sm:py-12 w-full">
+            <h2 class="text-3xl text-center font-mono">Accessories</h2>
+            <div class="sm:grid sm:grid-cols-2 sm:grid-rows-3 xl:grid xl:grid-cols-4 xl:grid-rows-2 gap-3 mt-8">
+                <div class="max-sm:mx-auto flex flex-col items-center max-lg:flex max-lg:flex-col max-lg:w-[240px] max-lg:mx-auto">
+                    <div class="w-[240px] relative">
+                        <img src="images/CHOETECHearbud.webp" alt="">
+                        <i class="fa-regular fa-heart mr-2 absolute top-2 right-1 text-white hover:text-red-500"></i>
+                    </div>
+                    <div class="py-5">
+                        <p class="text-base mb-5 font-extrabold">CHOETECH TRUE WIRELESS EARBUDS BLUETOOTH 5.0 EARBUD (BH-T01)</p>
+                        <p class="text-xl">
+                            Model: Choetech BH-T01
+                            Bluetooth 5.0
+                            Frequency response: 60Hz – 20KHz
+                            Bluetooth Range: 10M
+                            IPX5 waterproof
+                        </p>
+                        <p class="line-through">
+                            Rs 7850
+                        </p>
+                        <p class="text-xl">
+                            Rs 6500
+                        </p>
+                    </div>
+                </div>
+                <div class="max-sm:mx-auto flex flex-col items-center max-lg:flex max-lg:flex-col max-lg:w-[240px] max-lg:mx-auto">
+                    <div class="w-[240px] relative">
+                        <img src="images/RapooVM700.webp" alt="">
+                        <i class="fa-regular fa-heart mr-2 absolute top-2 right-1 text-white hover:text-red-500"></i>
+                    </div>
+                    <div class="py-5">
+                        <p class="text-base mb-5 font-extrabold">Rapoo VM700 Bluetooth TWS Gaming Earbuds – Bluetooth 5.0, Noise Reduction, 5hrs Battery life</p>
+                        <P class="text-xl">
+                            Bluetooth 5.0, automatic matching at startup
+                            APTX technology with low latency
+                            Cool intelligent-breathing LED light
+                            Noise reduction by double microphones, clearer voice
+                            Simple and...<a href="">more</a>
+                        </P>
+                        <p class="line-through">
+                            Rs 7850
+                        </p>
+                        <p class="text-xl">
+                            Rs 6500
+                        </p>
+                    </div>
+                </div>
+                <div class="max-sm:mx-auto flex flex-col items-center max-lg:flex max-lg:flex-col max-lg:w-[240px] max-lg:mx-auto">
+                    <div class="w-[240px] relative">
+                        <img src="images/UGREENearbud.jpg" alt="">
+                        <i class="fa-regular fa-heart mr-2 absolute top-2 right-1 text-white hover:text-red-500"></i>
+                    </div>
+                    <div class="py-5">
+                        <p class="text-base mb-5 font-extrabold">UGREEN HiTune T2 Bluetooth 5.0 Wireless Earbuds</p>
+                        <p class="text-xl">
+                            Model: HiTune T3
+                            Bluetooth 5.2, Protocol: HSP, HFP, A2DP, AVRCP
+                            Frequency Response: 20Hz-20KHz
+                            Bluetooth Range: 10M
+                            IPX5 waterproof
+                        </p>
+                        <P class="text-xl">Rs 4500</P>
+                    </div>
+                </div>
+                <div class="max-sm:mx-auto flex flex-col items-center max-lg:flex max-lg:flex-col max-lg:w-[240px] max-lg:mx-auto">
+                    <div class="w-[240px] relative">
+                        <img src="images/KingstonSSD.jpg" alt="">
+                        <i class="fa-regular fa-heart mr-2 absolute top-2 right-1 text-white hover:text-red-500"></i>
+                    </div>
+                    <div class="py-5">
+                        <p class="text-base mb-5 font-extrabold">Kingston A400 240GB 2.5 inch SATA 3 Internal SSD</p>
+                        <p class="text-xl">
+                            MPN: SA400S37/240G
+                            Model: A400 240GB 2.5 inch SATA 3 Internal SSD
+                            SATA Rev 3.0 Internal SSD
+                            Up to 500 MB/s Read Speed
+                            Up to 350 MB/s Write Speed
+                            Faster than an HDD
+                        </p>
+                        <P class="text-xl">Rs 5000</P>
+                    </div>
+                </div>
+                <div class="max-sm:mx-auto flex flex-col items-center max-lg:flex max-lg:flex-col max-lg:w-[240px] max-lg:mx-auto">
+                    <div class="w-[240px] relative">
+                        <img src="images/Havitkeyboard.jpg" alt="">
+                        <i class="fa-regular fa-heart mr-2 absolute top-2 right-1 text-white hover:text-red-500"></i>
+                    </div>
+                    <div class="py-5">
+                        <p class="text-base mb-5 font-extrabold">Havit HV-KB378 USB Exquisite Wired Keyboard</p>
+                        <p class="text-xl">
+                            Key Specifications
+                            Interface Type: USB/PS2
+                            Dimension: 438.5 (L) * 136 (W) * 16.6 (H) mm
+                            The number of keys: 104
+                            Operation Stroke: 3.0 +- 0.3mm
+                            Cable Length: 1400 +- 20mm
+                        </p>
+                        <P class="text-xl">Rs 7000</P>
+                    </div>
+                </div>
+                <div class="max-sm:mx-auto flex flex-col items-center max-lg:flex max-lg:flex-col max-lg:w-[240px] max-lg:mx-auto">
+                    <div class="w-[240px] relative">
+                        <img src="images/HAVITmouse.webp" alt="">
+                        <i class="fa-regular fa-heart mr-2 absolute top-2 right-1 text-white hover:text-red-500"></i>
+                    </div>
+                    <div class="py-5">
+                        <p class="text-base mb-5 font-extrabold">Havit HV-KB378 USB Exquisite Wired Keyboard</p>
+                        <p class="text-xl">
+                            Key Specification:
+                            Wireless Technology: Advanced 2.4GHz
+                            Upto 10 Meter Wide Coverage
+                            No of Keys: 3 Keys
+                            Resolution: 1000DPI
+                            Key life: 100,000,000 times
+                            1 Year Warranty
+                        </p>
+                        <P class="text-xl">Rs 5000</P>
+                    </div>
+                </div>
+                <div class="max-sm:mx-auto flex flex-col items-center max-lg:flex max-lg:flex-col max-lg:w-[240px] max-lg:mx-auto">
+                    <div class="w-[240px] relative">
+                        <img src="images/RAPOOV50S.png" alt="">
+                        <i class="fa-regular fa-heart mr-2 absolute top-2 right-1 text-white hover:text-red-500"></i>
+                    </div>
+                    <div class="py-5">
+                        <p class="text-base mb-5 font-extrabold">RAPOO V50S Backlit Gaming Keyboard - BLACK</p>
+                        <p class="text-xl">
+                            Model: Rapoo V50S Backlit Gaming Keyboard
+                            Game Mode: Anti-ghosting
+                            Backlight: Adjustable Backlight
+                            Color:  Black
+                            Connection Type: Wired
+                            Spill-resistant: Yes
+                            Warranty: 1 Year Warranty
+                        </p>
+                        <P class="text-xl">Rs 5000</P>
+                    </div>
+                </div>
+                <div class="max-sm:mx-auto flex flex-col items-center max-lg:flex max-lg:flex-col max-lg:w-[240px] max-lg:mx-auto">
+                    <div class="w-[240px] relative">
+                        <img src="images/RapooK10NumericKeysCompactWired Numeric.webp" alt="">
+                        <i class="fa-regular fa-heart mr-2 absolute top-2 right-1 text-white hover:text-red-500"></i>
+                    </div>
+                    <div class="py-5">
+                        <p class="text-base mb-5 font-extrabold">Rapoo K10 Numeric Keyboard - 23-Keys Compact Wired Numeric Keypad USB Number Pad for PC Laptop
+                        </p>
+                        <p class="text-xl">
+                            Key Features
+                            Model: Rapoo K10 Numeric Keyboard
+                            No of Keys: 23-Keys
+                            Type: Plug & Play
+                            Color:  Black
+                            Connection Type: Wired
+                            Item Weight:  200g
+                            Warranty: 1 Year Warranty
+                        </p>
+                        <P class="text-xl">Rs 10000</P>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Accessories section end -->
+        
+        <!-- footer section start -->
+        <footer class="flex max-sm:flex max-sm:flex-col max-md:grid max-md:grid-cols-2  justify-around padding bg-black padding-x padding-t pb-8 text-white">
+            <div class="mb-8 md:mb-0 md:mr-8 max-md:mt-6">
+                <ul class="flex flex-col">
+                    <li class="mb-4">
+                        <img src="" alt="image isn't fixed now.">
+                    </li>
+                    <li class="mb-2">
+                        <p>Support</p>
+                    </li>
+                    <li class="mb-2">
+                        <p>sales@itti.com.np</p>
+                    </li>
+                    <li class="mb-2">
+                        <p>01-5350440 / 01-5911594</p>
+                    </li>
+                </ul>
+                <button class="bg-black rounded p-2 border-solid border-2 w-30 hover:bg-red-600">
+                    <i class="fa-solid fa-location-dot mr-2"></i>Find out store
+                </button>
+            </div>
+            <div class="mb-8 md:mb-0 max-md:mt-6">
+                <ul class="flex flex-col">
+                    <li class="mb-4 md:mb-2">
+                        <h3>ITTI Categories</h3>
+                    </li>
+                    <li class="mb-2 hover:text-red-500">
+                        <a href="">Gaming</a>
+                    </li>
+                    <li class="mb-2 hover:text-red-500">
+                        <a href="">Desktip & Server</a>
+                    </li>
+                    <li class="mb-2 hover:text-red-500">
+                        <a href="">Monitors</a>
+                    </li>
+                    <li class="hover:text-red-500">
+                        <a href="">Accessories</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mb-8 md:mb-0 max-md:mt-6">
+                <ul class="flex flex-col">
+                    <li class="mb-4 md:mb-2">
+                        <h3>About ITTI</h3>
+                    </li>
+                    <li class="mb-2 hover:text-red-500">
+                        <a href="">About ITTI</a>
+                    </li>
+                    <li class="mb-2 hover:text-red-500">
+                        <a href="">Terms & Conditions</a>
+                    </li>
+                    <li class="mb-2 hover:text-red-500">
+                        <a href="">Warranty</a>
+                    </li>
+                    <li class="mb-2 hover:text-red-500">
+                        <a href="">Trivacy Policy</a>
+                    </li>
+                    <li class=" hover:text-red-500">
+                        <a href="">Blog</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mb-8 md:mb-0 max-md:mt-6">
+                <ul class="flex flex-col">
+                    <li class="mb-4 md:mb-2">
+                        <h3>Customer Service</h3>
+                    </li>
+                    <li class="mb-2 hover:text-red-500">
+                        <a href="">Refund & Return Policy</a>
+                    </li>
+                    <li class="mb-2 hover:text-red-500">
+                        <a href="">My Account</a>
+                    </li>
+                    <li class="mb-2 hover:text-red-500">
+                        <a href="">Contact Us</a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+        <!-- footer section end -->
+    
+        <!-- footer section for mobile devices or devices width less then 640px -->
+        <div class="w-full bg-white py-5 px-2 border-solid border-2 hidden max-sm:block sticky bottom-0 ">
+            <ul class="flex justify-between">
+                <li><a class="flex flex-col items-center" href=""><i class="fa-solid fa-house"></i>Home</a></li>
+                <li><a class="flex flex-col items-center" href=""><i class="fa-solid fa-magnifying-glass"></i>Search</a></li>
+                <li><a class="flex flex-col items-center" href=""><i class="fa-solid fa-desktop"></i>CustomPc</a></li>
+                <li><a class="flex flex-col items-center" href=""><i class="fa-solid fa-cart-shopping mr-2"></i>Cart</a></li>
+                <li><a class="flex flex-col items-center" href=""><i class="fa-solid fa-user"></i>Account</a></li>
+            </ul>
+        </div>
 </body>
+
+<script>
+    function toggleDropdown(){
+        let dropdown = document.querySelector("#dropdown");
+        dropdown.classList.toggle("hidden");
+    }
+</script>
 </html>

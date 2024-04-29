@@ -13,7 +13,7 @@
       <div>
         <h1>LogIn</h1>
       </div>
-      <form action="" method="post">
+      <form action="../../LoginServlet" method="post">
         <div class="user_details">
           <div class="input_box">
             <label for="username">Username:</label>

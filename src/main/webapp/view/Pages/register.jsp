@@ -1,4 +1,4 @@
-<%@page import="com.itDokan.rest.StringUtil"%>
+<%@page import="util.StringUtils"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
 	<div class="container">
 		<%--Display error message if it exists --%>
 		<%
-		String errorMessage = (String) request.getAttribute(StringUtil.ERROR_MESSAGE);
+		String errorMessage = (String) request.getAttribute(StringUtils.ERROR_MESSAGE);
 		if(errorMessage != null && !errorMessage.isEmpty()){
 		%>
 		<p class="error-message"><%=errorMessage%></p>
