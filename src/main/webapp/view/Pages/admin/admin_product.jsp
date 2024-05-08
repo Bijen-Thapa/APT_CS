@@ -230,7 +230,7 @@ ResultSet resultSet = null;
 						<i class="fas fa-list mr-3"></i> Latest Reports
 					</p>
 					<div class="bg-white overflow-auto">
-						<form action="../../../ProductServlet" method="post">
+						<form action="../../../UpdateProductServlet" >
 							<table class="min-w-full bg-white">
 								<thead class="bg-gray-800 text-white">
 									<tr>
@@ -254,7 +254,8 @@ ResultSet resultSet = null;
 									</tr>
 
 								</thead>
-								<tbody class="text-gray-700">
+								
+									<tbody class="text-gray-700">
 									<%
 									DatabaseController dbCon = new DatabaseController();
 									try (Connection con = dbCon.getConnection()) {
@@ -266,12 +267,16 @@ ResultSet resultSet = null;
 										while (result.next()) {
 									%>
 									<tr>
-										<td
-											class="text-left py-3 px-4 uppercase font-semibold text-sm"><%=result.getString("id")%></td>
+										<td 
+											class="text-left py-3 px-4 uppercase font-semibold text-sm" id="prod_id"><jsp:element name="prod_id"><%= result.getString("id") %></jsp:element> </td>
 										<td
 											class="text-left py-3 px-4 uppercase font-semibold text-sm"><%=result.getString("name")%></td>
+<!-- 										<td -->
+<%-- 											class="text-left py-3 px-2 uppercase font-semibold text-sm"><%=result.getString("image")%></td> --%>
 										<td
-											class="text-left py-3 px-2 uppercase font-semibold text-sm"><%=result.getString("image")%></td>
+											class="text-left py-3 px-2 uppercase font-semibold text-sm"><img alt=""<%= result.getString("image") %> src="../../<%=result.getString("image") %>" style="height: 150px"></td>
+											
+											
 										<td
 											class="text-left py-3 px-2 uppercase font-semibold text-sm"><%=result.getString("description")%></td>
 										<td
@@ -281,9 +286,11 @@ ResultSet resultSet = null;
 										<td
 											class="text-left py-3 px-4 uppercase font-semibold text-sm"><%=result.getString("price")%></td>
 										<td>
-											<button class="bg-green-500 py-2 px-3 rounded text-white">
+<!-- 											<a class="bg-green-500 py-2 px-3 rounded text-white" href="editProduct.jsp"> -->
+<!-- 												Edit</a> -->
+											<button class="bg-green-500 py-2 px-3 rounded text-white" name="edit">
 												Edit</button>
-											<button class="bg-red-500 py-2 px-3 rounded text-white">
+											<button class="bg-red-500 py-2 px-3 rounded text-white" formmethod="post">
 												Delete</button>
 										</td>
 									</tr>

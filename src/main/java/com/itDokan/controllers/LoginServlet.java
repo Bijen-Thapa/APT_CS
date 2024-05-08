@@ -40,27 +40,41 @@ public class LoginServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-// TODO Auto-generated method stub
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
 
 		System.out.println("Username: " + userName);
 		System.out.println("password: " + password);
+		DatabaseController cc = new DatabaseController();
+		
+//		System.out.println("enc: "+cc.encryptPassword("admin"));
+		
 
-		String decryptedPassword = decryptPassword(password);
-		int loginResult = dbController.getUserLoginInfo(userName, decryptedPassword);
+//		String decryptedPassword = decryptPassword(password);
+		int loginResult = dbController.getUserLoginInfo(userName, password);
+		System.out.println("logRes: "+loginResult);
+		
 		if (loginResult == 1) {
 			HttpSession userSession = request.getSession();
 			userSession.setAttribute("username", userName);
-			userSession.setMaxInactiveInterval(3 * 60);
-			response.sendRedirect(request.getContextPath() + "/view/Pages/Header.jsp");
+			userSession.setMaxInactiveInterval(3 * 60); // 60 seconds times 3 
+//			response.sendRedirect(request.getContextPath() + "/view/Pages/Header.jsp");
+			
+//			response.addCookie(null)
+//			System.out.println("servlet "+userSession.getClass());
+//			Cookie cok = new Cookie("accountDetail", cc.getUserLoginInfo(userName, decryptedPassword));
+			response.sendRedirect(request.getContextPath() + "/view/Pages/product.jsp");
 
-		} else if (loginResult == 0) {
+		} else if (loginResult == 11){
+			HttpSession ses = request.getSession();
+			ses.setAttribute("isAdmin", true);
+			ses.setAttribute("activeTab", "dashboard");
+			response.sendRedirect(request.getContextPath() + "/view/Pages/admin/admin_product.jsp");
+
+		}else {
 			response.sendRedirect(request.getContextPath() + "/view/Pages/login.jsp?error=1");
 			System.out.println("Error found");
-		} else {
-
-		}
+		} 
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
 // TODO: user login and redirect them to respective pages according to role
@@ -68,7 +82,6 @@ public class LoginServlet extends HttpServlet {
 	}
 
 	private String decryptPassword(String password) {
-// TODO Auto-generated method stub
 		try {
 			MessageDigest decrypt = MessageDigest.getInstance("SHA-256");
 			byte[] decryption = decrypt.digest(password.getBytes());
@@ -94,7 +107,6 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

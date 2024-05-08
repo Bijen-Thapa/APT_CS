@@ -39,7 +39,6 @@
         </div>
         <p style="font-size: 14px; text-align: center">
           Don't have an account? <a href="registrations.jsp">Sign Up</a>
-          <!-- // TODO need to uodate into JSP -->
         </p>
       </form>
     </div>

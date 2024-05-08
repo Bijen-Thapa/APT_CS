@@ -1,0 +1,48 @@
+background:
+	Ashly Madison was launched in 2001 by Noel Biderman, a Canadian internet entrepreneur, Biderman, who studied Economics at the University of California, envisioned a platform that would facilitate discreet connection for individuals seeking external relationships. The website’s name Ashley Madison, was derived from two popular baby names for girls in the US: ‘Ashley’ and ‘Madison’. Ashley Madison operated as an online dating website specifically catering to those interested in affairs. The site’s user base included individuals seeking discreet relationships outside their marriages. Biderman’s controversial background as a sports attorney and agent for athletes added to the intrigue surrounding the platform. His personal branding as “the most hated man on the internet” reflected the polarizing nature of Ashley Madison. In July 2015, a group calling 
+
+Ashley Madison is an online dating service catering to people who are married and seeking extramarital affairs. It was founded in 2002 by Darren J. Morgenstern and is owned by Ruby Life, Inc. The website promotes the slogan "Life is short. Have an affair." In addition to Ashley Madison, the company also manages two other sites, "CougarLife.com" and "EstablishedMen.com," which cater to specific demographics. In 2015, Avid Life Media (now Ruby Life Inc.) faced a massive data breach, one of the largest and most controversial in U.S. history. The breach resulted in the exposure of the personal information of over 32 million users, comprising more than 60 gigabytes of data. The stolen data included names, passwords, addresses, and phone numbers submitted by users of the site, although some users may have provided fake information for anonymity. The consequences of the breach extended until 2017. Despite the security incident, the company rebranded as Ruby Life Inc. and continued its operations. The leaked data posed significant risks due to the amount of personally identifiable information (PII) exposed, raising concerns about privacy and security for the affected users. The hack was carried out by a group of hackers calling themselves "The Impact Team." The hackers released the stolen data online, including names, email addresses, home addresses, credit card numbers, and sexual preferences. The Ashley Madison hack had several legal, professional, and ethical implications. From a legal standpoint, the hack led to investigations by law enforcement agencies in several countries. The hack also led to lawsuits against Ashley Madison and its parent company, Avid Life Media.
+
+
+
+ii.	Fourth Amendment Implications
+The Fourth Amendment primarily pertains to govern actions in obtaining personal information. However, in civil matters like the Ashely Madison case, privacy protections are limited. Lawsuit against Ashley Madison raised questions about privacy rights and legal resources
+
+
+ii.	Fourth Amendment Implications
+The Fourth Amendment is essential for safeguarding citizens’ privacy and ensuring that government actions stay within the bounds of the constitution. However, as society changes and technology develop, so does its interpretation. The Fourth Amendment, a fundamental component of the U.S. Constitution, protects citizens from unjustified government interference while balancing the demands of law enforcement with the rights to privacy. In an increasing digital age, when privacy concerns are paramount, this balance is especially important. In general, the Fourth Amendment address the legitimacy of government agencies’ collection of private data. These safeguards are less obvious in civil cases like the Ashley Madison lawsuit, though significant concerns over the extent of privacy rights and the legal remedies for violation in a non-governmental setting were bought up by this action.
+
+iv.	Data breaching
+The hackers, known as “The Impact Team”, stole user data, including profiles, financial information, and identity details. Over 37 million users were affected by the breach, and their data was made publicly available. Ashley Madison faced lawsuits alleging negligence in securing user data and failing to promptly notify users of the breach. The breach highlighted the need for robust security measures and transparency in handling sensitive information.
+
+x.	Trust issues
+The breach shattered trust in Ashley Madison and raised questions about trustworthiness in the digital age. Users became more cautious about sharing personal information online.
+
+i.	Unfaithfulness 
+The breach exposed the identity of millions of users who had trusted Ashley Madison to keep their affairs confidential. Marriages and relationships were strained, leading to emotional turmoil and broke trusts.
+
+iv.	Data breaching
+Ashley Madison, a controversial website for those looking for extramarital relationships, had a major data breach that was planned and executed by a hacking collective known as "The Impact Team." The hackers gained access to the website's databases and stole personal identifying details, financial information, and user profiles. In the end, they posted this private information online, making the lives of more than 37 million people publicly visible . 
+
+viii.	Liability for negligence
+Lawsuit alleged that Ashly Madison failed to adequate secure user data, leading to negligence claims. The company’s practices, including, inadequate security measures and failure to notify users promptly, were central to these claims. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+i.	Violation of customer policies
+Ashley Madison allegedly failed to protect its user’s information, leading to breach of trust. Users subscribed to the website with the expectation of confidentiality and anonymity, which was not upheld.
+
+ii.	Violation of Marital contract
+The breach revealed extramarital affairs, potentially leading to legal consequences in divorce cases. Documentation of credit card transactions related to Ashley Madison expenses may be considered dissipation of martial assets.
+
+

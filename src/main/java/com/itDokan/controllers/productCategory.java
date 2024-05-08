@@ -26,7 +26,7 @@ public class productCategory {
 			while (result.next()) {
 				productCategoryModel cat = new productCategoryModel(Integer.parseInt(result.getString("id")), result.getString("name"), result.getString("description")); 
 				list.add(cat);
-				System.out.println("aaa"+cat.getName());
+//				System.out.println("aaa"+cat.getName());
 			}
 		} catch (Exception e) {
 			// TODO: handle exception

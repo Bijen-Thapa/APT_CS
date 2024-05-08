@@ -1,8 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="ISO-8859-1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tailwind Admin Template</title>
     <meta name="author" content="David Grzyb">
     <meta name="description" content="">
@@ -23,7 +25,7 @@
 </head>
 <body class="bg-gray-100 font-family-karla flex">
 
-	
+	<%@ include file="admin_nav.jsp" %>
 
 <!--     <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl"> -->
 <!--         <div class="p-6"> -->

@@ -4,21 +4,29 @@
     <!-- Header section start -->
     <header class="flex justify-between px-10 py-4 bg-black font-mono text-white max-sm:hidden">
         <div class="flex ">
-            <p>Need help?</p>
-            <p>01-5350440 | </p>
+        
+            <p>Need help?  </p>
+            <p>   itDokan@gmail.com | </p>
             <p>Contact</p>
+        
         </div>
         <div class="max-md:hidden">
             <p>Hello world</p>
         </div>
         <div>
             <ul class="flex">
+            <% HttpSession ses = request.getSession();
+            	if (ses.getAttribute("username") != null){
+            %>
                 <li class="mx-2">
-                    My Account
+                   <a href="user_profile.jsp">My Account</a> 
                 </li>
+                <% }else{ %>
+                
                 <li class="mx-2">
-                    Sign in
+                <a href="login.jsp"> Sign in/Sign up</a>    
                 </li>
+                <% } %>
             </ul>
         </div>
     </header>
@@ -28,7 +36,7 @@
     <nav class="max-sm:flex max-sm:justify-between max-sm:items-center">
         <div class="flex justify-around items-center">
             <div class="w-20">
-                <a href="index.html"><img class="" src="images/itDokan.svg" alt=""></a>
+                <a href="index.jsp"><img class="" src="../images/itDokan.svg" alt=""></a>
             </div>
             <div class="flex items-center flex-1 sm:max-w-[300px] md:max-w-[500px] max-sm:hidden">
                 <input class="border-solid border-2 relative h-10 flex-1 p-2 w-0 max-sm:ml-3" type="text" placeholder="Search">

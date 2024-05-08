@@ -156,7 +156,7 @@ ResultSet resultSet = null;
 
 		<div class="w-full overflow-x-hidden border-t flex flex-col">
 			<main class="w-full flex-grow p-6">
-				<h1 class="text-3xl text-black pb-6">Product</h1>
+				<h1 class="text-3xl text-black pb-6">Product category</h1>
 
 				<div class="w-full mt-12">
 					<p class="text-xl pb-3 flex items-center">
@@ -244,7 +244,7 @@ ResultSet resultSet = null;
 										<td
 											class="text-left py-3 px-2 uppercase font-semibold text-sm"><%=result.getString("description")%></td>
 										<td
-											class="text-left py-3 px-2 uppercase font-semibold text-sm"><%=result.getString("no_of_products")%></td>
+											class="text-left py-3 px-2 uppercase font-semibold text-sm"></td>
 										<td
 											class="text-left py-3 px-2 uppercase font-semibold text-sm"><%=result.getString("added_date")%></td>
 										<td>

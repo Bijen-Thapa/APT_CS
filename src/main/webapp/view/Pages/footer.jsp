@@ -4,14 +4,14 @@
     <footer class="flex max-sm:flex max-sm:flex-col max-md:grid max-md:grid-cols-2  justify-around padding bg-black padding-x padding-t pb-8 text-white">
         <div class="mb-8 md:mb-0 md:mr-8 max-md:mt-6">
             <ul class="flex flex-col">
-                <li class="mb-4">
-                    <img src="" alt="image isn't fixed now.">
+                <li class="mb-4" >
+                    <img src="../images/itDokan_alter.webp" alt="image isn't fixed now." style="height: 125px">
                 </li>
                 <li class="mb-2">
-                    <p>Support</p>
+                    <p>Support: </p>
                 </li>
                 <li class="mb-2">
-                    <p>sales@itti.com.np</p>
+                    <p>sales@itdokan	.com.np</p>
                 </li>
                 <li class="mb-2">
                     <p>01-5350440 / 01-5911594</p>
@@ -24,13 +24,13 @@
         <div class="mb-8 md:mb-0 max-md:mt-6">
             <ul class="flex flex-col">
                 <li class="mb-4 md:mb-2">
-                    <h3>ITTI Categories</h3>
+                    <h2>ItDokan Categories</h2>
                 </li>
                 <li class="mb-2 hover:text-red-500">
                     <a href="">Gaming</a>
                 </li>
                 <li class="mb-2 hover:text-red-500">
-                    <a href="">Desktip & Server</a>
+                    <a href="">Desktop & Server</a>
                 </li>
                 <li class="mb-2 hover:text-red-500">
                     <a href="">Monitors</a>
@@ -43,10 +43,10 @@
         <div class="mb-8 md:mb-0 max-md:mt-6">
             <ul class="flex flex-col">
                 <li class="mb-4 md:mb-2">
-                    <h3>About ITTI</h3>
+                    <h3>About ItDokan</h3>
                 </li>
                 <li class="mb-2 hover:text-red-500">
-                    <a href="">About ITTI</a>
+                    <a href="">About Us</a>
                 </li>
                 <li class="mb-2 hover:text-red-500">
                     <a href="">Terms & Conditions</a>

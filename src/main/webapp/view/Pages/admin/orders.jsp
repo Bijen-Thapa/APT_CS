@@ -160,74 +160,10 @@ ResultSet resultSet = null;
 
 		<div class="w-full overflow-x-hidden border-t flex flex-col">
 			<main class="w-full flex-grow p-6">
-				<h1 class="text-3xl text-black pb-6">Product</h1>
+				<h1 class="text-3xl text-black pb-6">User orders</h1>
 
-				<div class="w-full mt-12">
-					<p class="text-xl pb-3 flex items-center">
-						<i class="fas fa-list mr-3"></i> Input Form
-					</p>
-					<div class="bg-white overflow-auto">
-						<form action="../../../AddProductServlet"
-							enctype="multipart/form-data" method="post">
-							<table class="min-w-full bg-white">
-								<thead class="bg-gray-800 text-white">
-									<tr>
-										<!-- 	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Product ID</th> -->
-										<th
-											class="text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
-										<th
-											class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Image</th>
-										<th
-											class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Description</th>
-										<th
-											class="text-left py-3 px-4 uppercase font-semibold text-sm">Quantity</th>
-										<th
-											class="text-left py-3 px-4 uppercase font-semibold text-sm">Price</th>
-										<th
-											class="text-left py-3 px-4 uppercase font-semibold text-sm">Category</th>
-										<!-- 	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Action</th> -->
-
-									</tr>
-								</thead>
-								<tbody class="text-gray-700">
-									<tr>
-										<!-- 										<td class="text-left py-2 px-4"><input class="py-2 px-2" -->
-										<!-- 											id="product_id" name="product_id" type="text" -->
-										<!-- 											placeholder="product id"></td> -->
-										<!-- yeso type le ailey samma kei farak parey xaina -->
-										<td class="text-left py-2 px-4"><input class="py-2 px-2"
-											id="name" name="name" type="text" placeholder="item name"></td>
-										<td class="w-1/3 text-left py-2 px-4"><input
-											class="py-2 px-2" id="img" name="img" type="file"></td>
-										<td class="w-1/3 text-left py-2 px-4"><input
-											class="py-2 px-2" id="description" name="description"
-											type="text" placeholder="Something about product"></td>
-										<td class="text-left py-2 px-4"><input class="py-2 px-2"
-											id="quantity" name="qty" type="number" placeholder="1"></td>
-										<td class="text-left py-2 px-4"><input class="py-2 px-2"
-											id="quantity" name="price" type="number" placeholder="$$$"></td>
-										<td class="text-left py-2 px-4"><select name="category">
-												<option value="">--select category--</option>
-												<%
-												productCategory cat = new productCategory();
-												ArrayList<productCategoryModel> lisst = cat.getProductCategory();
-												for (productCategoryModel mod : lisst) {
-												%>
-												<option value="<%=mod.getId()%>"><%=mod.getName()%></option>
-												<%
-												}
-												%>
-										</select></td>
-										<!-- 	                                    <td class="text-left py-2 px-4"><input class="py-2 px-2" id="price" name="price" type="number" placeholder="10"></td>  -->
-										<td></td>
-									</tr>
-								</tbody>
-							</table>
-							<button class="py-2 px-4 bg-green-400 text-white" type="submit">Add</button>
-						</form>
-
-					</div>
-				</div>
+			
+				
 				<div class="w-full mt-12">
 					<p class="text-xl pb-3 flex items-center">
 						<i class="fas fa-list mr-3"></i> Latest Reports

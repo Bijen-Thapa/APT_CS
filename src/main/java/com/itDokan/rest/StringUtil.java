@@ -19,7 +19,11 @@ public class StringUtil {
 	
 	public static String  INSER_PRODUCT_CATEGORY = "INSERT INTO product_category (name, description) VALUES (?, ?);";
 	
-	public static final String GET_LOGIN_USER_INFO = "SELECT * FROM user_info WHERE user_name = ? AND password = ?";
+	public static String GET_USER_BY_USER_NAME = "SELECT * FROM user WHERE user_name = ?";
+	
+	public static final String GET_LOGIN_USER_INFO = "SELECT * FROM user WHERE user_name = ? AND password = ?";
+
+	public static final String DELET_PRODUCT = "DELETE FROM `product` WHERE `product`.`id` = ?";
 	
 	public static final String SUCCESS_MESSAGE = "successMessage";
 	

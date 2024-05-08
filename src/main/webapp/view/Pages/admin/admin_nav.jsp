@@ -19,6 +19,7 @@
 </style>
 </head>
 <body class="bg-gray-100 font-family-karla flex">
+	<% HttpSession ses = request.getSession();	String active_tab = String.valueOf( ses.getAttribute("activeTab")); %>
     <aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
         <div class="p-6">
             <a href="index.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
@@ -28,31 +29,35 @@
             </button>
         </div>
         <nav class="text-white text-base font-semibold pt-3">
-            <a href="admin_index.html" class="flex items-center active-nav-link text-white py-4 pl-6 nav-item">
+            <a href="admin_index.jsp" class="flex items-center <% if (active_tab == "dashboard"){ %>  active-nav-link <% } %> text-white py-4 pl-6 nav-item">
                 <i class="fas fa-tachometer-alt mr-3"></i>
                 Dashboard
+                <% ses.setAttribute("activetab", "dashnoard"); %>
             </a>
-            <a  href="admin_product.jsp" class="flex tems-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a  href="admin_product.jsp" class="flex tems-center <% if (active_tab == "product"){ %>  active-nav-link <% } %> text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-calendar mr-3"></i>
                 Product
+                <% ses.setAttribute("activetab", "product"); %>
             </a>
-            <a href="orders.jsp" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="orders.jsp" class="flex items-center <% if (active_tab == "orders"){ %>  active-nav-link <% } %> text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-sticky-note mr-3"></i>
                 Orders
+                <% ses.setAttribute("activetab", "orders"); %>
             </a>
-            <a href="tables.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="admin_deliveries.jsp" class="flex items-center <% if (active_tab == "deliveries"){ %>  active-nav-link <% } %> text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-table mr-3"></i>
                 Deliveries
+                <% ses.setAttribute("activetab", "deliveries"); %>
             </a>
-            <a href="admin_user.jsp" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="admin_user.jsp" class="flex items-center <% if (active_tab == "Users"){ %>  active-nav-link <% } %> text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-align-left mr-3"></i>
                 Users
             </a>
-            <a href="product_category.jsp" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="product_category.jsp" class="flex items-center <% if (active_tab == "product category"){ %>  active-nav-link <% } %> text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-tablet-alt mr-3"></i>
                 Product categories
             </a>
-            <a href="calendar.html" class="flex items-center text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
+            <a href="admin_calendar.jsp" class="flex items-center <% if (active_tab == "calender"){ %>  active-nav-link <% } %> text-white opacity-75 hover:opacity-100 py-4 pl-6 nav-item">
                 <i class="fas fa-calendar mr-3"></i>
                 Calendar
             </a>
