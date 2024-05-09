@@ -1,10 +1,9 @@
+package controller;
 package com.itDokan.controllers;
 
 import java.io.IOException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Timer;
-import java.util.TimerTask;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,16 +13,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.itDokan.controllers.database.DatabaseController;
-
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet(asyncSupported = true, urlPatterns = { "/LoginServlet"})
+@WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-	
+    
 	DatabaseController dbController = new DatabaseController();
     /**
      * @see HttpServlet#HttpServlet()
@@ -32,14 +28,11 @@ public class LoginServlet extends HttpServlet {
         super();
         // TODO Auto-generated constructor stub
     }
-    
-    
-    
+
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		// TODO Auto-generated method stub
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
@@ -53,9 +46,15 @@ public class LoginServlet extends HttpServlet {
 		if (loginResult == 1) {
 			HttpSession userSession = request.getSession();
 			userSession.setAttribute("username", userName);
-			userSession.setMaxInactiveInterval(3*60);
+			userSession.setMaxInactiveInterval(30*60);
+			
+			Cookie userCookie = new Cookie("user", userName);
+			userCookie.setMaxAge(30*60);
+			response.addCookie(userCookie);
+			
+			
+			
 			response.sendRedirect(request.getContextPath() + "/view/Pages/Header.jsp");
-            
 		} else if (loginResult == 0) {
 			response.sendRedirect(request.getContextPath() + "/view/Pages/login.jsp?error=1");
 			System.out.println("Error found");
@@ -63,9 +62,6 @@ public class LoginServlet extends HttpServlet {
 			
 		}
 		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		// TODO: 	user login and redirect them to respective pages according to role
-		
 	}
 
 	private String decryptPassword(String password) {
@@ -86,6 +82,9 @@ public class LoginServlet extends HttpServlet {
 	        e.printStackTrace();
 	        return null;
 	    }
+		
+		// TODO: 	user login and redirect them to respective pages according to role
+		
 	}
 
 	/**
@@ -93,6 +92,7 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+
 		doGet(request, response);
 	}
 

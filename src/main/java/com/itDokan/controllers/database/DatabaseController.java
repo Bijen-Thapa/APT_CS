@@ -42,7 +42,9 @@ public class DatabaseController {
 			st.setString(6, userModel.getPhoneNumber());
 			st.setString(7, userModel.getEmail());
 			st.setString(8, userModel.getAddress());
-			st.setString(9, userModel.getPassword());
+			
+			String encryptedPassword = encryptPassword(userModel.getPassword());
+            st.setString(9, encryptedPassword);
 			
 			int result = st.executeUpdate();
 			return result > 0 ? 1 : 0;
@@ -92,13 +94,13 @@ private String encryptPassword(String password) {
 		}
 	}
 	
-	public int getUserLoginInfo(String userName, String hashedPassword) {
+	public int getUserLoginInfo(String userName, String encryptedPassword) {
 		// TODO Auto-generated method stub
 		
 		try (Connection con = getConnection()) {
 			PreparedStatement st = con.prepareStatement(StringUtil.GET_LOGIN_USER_INFO);
 			st.setString(1, userName);
-			st.setString(2, hashedPassword);
+			st.setString(2, encryptedPassword);
 			
 			ResultSet rs = st.executeQuery();
 			

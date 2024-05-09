@@ -7,7 +7,19 @@
 <title>Insert title here</title>
 </head>
 <body>
-Welcome
-<a href= "LogoytServlet"
+
+<% 
+String userSession = (String) session.getAttribute("username");
+if(userSession != null){
+		out.println("Welcome, " + userSession);
+	} else{
+		response.sendRedirect(request.getContextPath() + "/view/Pages/login.jsp");
+	}
+%>
+	
+	
+<a href="<%= request.getContextPath() %>../../LogoutServlet">
+<button class= "logout">Log out</button></a>
+
 </body>
 </html>
