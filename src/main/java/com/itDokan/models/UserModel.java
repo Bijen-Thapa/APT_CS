@@ -1,13 +1,15 @@
 package com.itDokan.models;
 
+import java.sql.Date;
 import java.time.LocalDate;
 
 public class UserModel {
 
 	private String userName, firstName, lastName, gender, address, email, phoneNumber, password;
-	private LocalDate dob;
+	private Date dob;
+	private int id;
 	
-	public UserModel(String userName, String firstName, String lastName, LocalDate dob, String gender, String email, String phoneNumber, String address, String password) {
+	public UserModel(String userName, String firstName, String lastName, Date dob, String gender, String email, String phoneNumber, String address, String password) {
 		this.userName = userName;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -19,10 +21,28 @@ public class UserModel {
 		this.dob = dob;
 	}
 	
-	public LocalDate getDob() {
+	
+	
+	public UserModel(String userName, String firstName, String lastName, String gender, String address, String email,
+			String phoneNumber, Date dob, int id) {
+		super();
+		this.userName = userName;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.gender = gender;
+		this.address = address;
+		this.email = email;
+		this.phoneNumber = phoneNumber;
+		this.dob = dob;
+		this.id = id;
+	}
+
+
+
+	public Date getDob() {
 		return dob;
 	}
-	public void setDob(LocalDate dob) {
+	public void setDob(	Date dob) {
 		this.dob = dob;
 	}
 	
@@ -81,6 +101,8 @@ public class UserModel {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	
+	public int getId() {
+		return id;
+	}
 
 }

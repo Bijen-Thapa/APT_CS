@@ -1,9 +1,34 @@
+<%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
+     
     <!-- Header section start -->
     <header class="flex justify-between px-10 py-4 bg-black font-mono text-white max-sm:hidden">
-        <div class="flex ">
+	<div class="flex ">
+	<%
+	session = request.getSession(false);
+
+	if (session == null) {
+		out.print("ses n"+session.getAttribute("username"));
+	%>
+	<script type="text/javascript">
+		sweetAlert("Session expired, Login again to continue!")
+	</script>
+
+	<%
+	}
+	%>
+	<script type="text/javascript">
+		function sweetAlert(msg) {
+			swal({
+				title : "warning",
+				text : msg,
+				icon : "warning",
+				button : "ok"
+			});
+		}
+	</script>
         
             <p>Need help?  </p>
             <p>   itDokan@gmail.com | </p>

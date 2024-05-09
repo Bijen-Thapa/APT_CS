@@ -1,3 +1,4 @@
+<%@page import="com.itDokan.models.UserModel"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="com.itDokan.controllers.database.DatabaseController"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -80,6 +81,7 @@ ResultSet resultSet = null;
 <body class="bg-gray-100 font-family-karla flex">
 
 
+<% Object uModel = request.getSession().getAttribute("userModel"); %>
 	<jsp:include page="user_nav.jsp"></jsp:include>
 	<div class="w-full flex flex-col h-screen overflow-y-hidden">
 		<!-- Desktop Header -->
@@ -156,156 +158,42 @@ ResultSet resultSet = null;
             </button> -->
 		</header>
 
-		<div class="w-full overflow-x-hidden border-t flex flex-col">
-			<main class="w-full flex-grow p-6">
-				<h1 class="text-3xl text-black pb-6">Product</h1>
-
-				<div class="w-full mt-12">
-					<p class="text-xl pb-3 flex items-center">
-						<i class="fas fa-list mr-3"></i> Input Form
-					</p>
-					<div class="bg-white overflow-auto">
-						<form action="../../../AddProductServlet" enctype="multipart/form-data" method="post">
-							<table class="min-w-full bg-white">
-								<thead class="bg-gray-800 text-white">
-									<tr>
-										<!-- 	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Product ID</th> -->
-										<th
-											class="text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
-										<th
-											class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Image</th>
-										<th
-											class="w-1/3 text-left py-3 px-4 uppercase font-semibold text-sm">Description</th>
-										<th
-											class="text-left py-3 px-4 uppercase font-semibold text-sm">Quantity</th>
-										<th
-											class="text-left py-3 px-4 uppercase font-semibold text-sm">Price</th>
-										<th
-											class="text-left py-3 px-4 uppercase font-semibold text-sm">Category</th>
-										<!-- 	                                    <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Action</th> -->
-
-									</tr>
-								</thead>
-								<tbody class="text-gray-700">
-									<tr>
-										<!-- 										<td class="text-left py-2 px-4"><input class="py-2 px-2" -->
-										<!-- 											id="product_id" name="product_id" type="text" -->
-										<!-- 											placeholder="product id"></td> -->
-										<!-- yeso type le ailey samma kei farak parey xaina -->
-										<td class="text-left py-2 px-4"><input class="py-2 px-2"
-											id="name" name="name" type="text" placeholder="item name"></td>
-										<td class="w-1/3 text-left py-2 px-4"><input
-											class="py-2 px-2" id="img" name="img" type="file" ></td>
-										<td class="w-1/3 text-left py-2 px-4"><input
-											class="py-2 px-2" id="description" name="description"
-											type="text" placeholder="Something about product"></td>
-										<td class="text-left py-2 px-4"><input class="py-2 px-2"
-											id="quantity" name="qty" type="number" placeholder="1"></td>
-										<td class="text-left py-2 px-4"><input class="py-2 px-2"
-											id="quantity" name="price" type="number" placeholder="$$$"></td>
-										<td class="text-left py-2 px-4"><select name="category">
-												<option value="">--select category--</option>
-												<%
-												productCategory cat = new productCategory();
-												ArrayList<productCategoryModel> lisst = cat.getProductCategory();
-												for (productCategoryModel mod : lisst) {
-												%>
-												<option value="<%=mod.getId()%>"><%=mod.getName()%></option>
-												<%
-												}
-												%>
-										</select></td>
-										<!-- 	                                    <td class="text-left py-2 px-4"><input class="py-2 px-2" id="price" name="price" type="number" placeholder="10"></td>  -->
-										<td></td>
-									</tr>
-								</tbody>
-							</table>
-							<button class="py-2 px-4 bg-green-400 text-white" type="submit">Add</button>
-						</form>
-
+		<div class="flex flex-col">
+			<div class="w-60 h-60">
+				<img src="./images/user3.jpg" class="w-full h-full rounded-full"
+					alt="">
+			</div>
+			<div class="border-solid border-2">
+				<div class="px-4 py-5 sm:px-6 ">
+					<h3 class="text-lg leading-6 font-medium text-gray-900">User
+						Profile</h3>
+					<p class="mt-1 max-w-2xl text-sm text-gray-500">This is some
+						information about the user.</p>
+				</div>
+				<div class="border-t border-gray-200 px-4 py-5 sm:p-0">
+					<div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+						<dt class="text-sm font-medium text-gray-500">Full name</dt>
+						<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+							Amrit Gurung</dd>
+					</div>
+					<div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+						<dt class="text-sm font-medium text-gray-500">Email address</dt>
+						<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+							example@gmail.com</dd>
+					</div>
+					<div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+						<dt class="text-sm font-medium text-gray-500">Phone number</dt>
+						<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+							(123) 456-7890</dd>
+					</div>
+					<div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+						<dt class="text-sm font-medium text-gray-500">Address</dt>
+						<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+							123 Main St<br> Anytown, USA 12345
+						</dd>
 					</div>
 				</div>
-				<div class="w-full mt-12">
-					<p class="text-xl pb-3 flex items-center">
-						<i class="fas fa-list mr-3"></i> Latest Reports
-					</p>
-					<div class="bg-white overflow-auto">
-						<form action="../../../ProductServlet" method="post">
-							<table class="min-w-full bg-white">
-								<thead class="bg-gray-800 text-white">
-									<tr>
-										<th
-											class="text-left py-3 px-4 uppercase font-semibold text-sm">Product
-											ID</th>
-										<th
-											class="text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
-										<th
-											class="text-left py-3 px-4 uppercase font-semibold text-sm">Image</th>
-										<th
-											class="text-left py-3 px-4 uppercase font-semibold text-sm">Description</th>
-										<th
-											class="text-left py-3 px-4 uppercase font-semibold text-sm">Category</th>
-										<th
-											class="text-left py-3 px-4 uppercase font-semibold text-sm">Quantity</th>
-										<th
-											class="text-left py-3 px-4 uppercase font-semibold text-sm">Price</th>
-										<th
-											class="text-left py-3 px-4 uppercase font-semibold text-sm">Action</th>
-									</tr>
-
-								</thead>
-								<tbody class="text-gray-700">
-									<%
-									DatabaseController dbCon = new DatabaseController();
-									try (Connection con = dbCon.getConnection()) {
-										// 										connection = DriverManager.getConnection(connectionUrl + database, userid, password);
-										// 										statement = connection.createStatement();
-										String sql = "select * from product";
-										PreparedStatement st = con.prepareStatement(sql);
-										ResultSet result = st.executeQuery();
-										while (result.next()) {
-									%>
-									<tr>
-										<td
-											class="text-left py-3 px-4 uppercase font-semibold text-sm"><%=result.getString("id")%></td>
-										<td
-											class="text-left py-3 px-4 uppercase font-semibold text-sm"><%=result.getString("name")%></td>
-										<td
-											class="text-left py-3 px-2 uppercase font-semibold text-sm"><%=result.getString("image")%></td>
-										<td
-											class="text-left py-3 px-2 uppercase font-semibold text-sm"><%=result.getString("description")%></td>
-										<td
-											class="text-left py-3 px-2 uppercase font-semibold text-sm"><%=result.getString("product_category")%></td>
-										<td
-											class="text-left py-3 px-4 uppercase font-semibold text-sm"><%=result.getString("qty")%></td>
-										<td
-											class="text-left py-3 px-4 uppercase font-semibold text-sm"><%=result.getString("price")%></td>
-										<td>
-											<button class="bg-green-500 py-2 px-3 rounded text-white">
-												Edit</button>
-											<button class="bg-red-500 py-2 px-3 rounded text-white">
-												Delete</button>
-										</td>
-									</tr>
-									<%
-									}
-// 									connection.close();
-									} catch (Exception e) {
-									e.printStackTrace();
-									}
-									%>
-								</tbody>
-								<tbody class="text-gray-700">
-									<tr>
-										<td></td>
-									</tr>
-								</tbody>
-							</table>
-						</form>
-
-					</div>
-				</div>
-			</main>
+			</div>
 		</div>
 
 	</div>

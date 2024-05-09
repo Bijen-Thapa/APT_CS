@@ -39,7 +39,7 @@ public class DatabaseController {
 			st.setString(2, userModel.getFirstName());
 			st.setString(3, userModel.getLastName());
 			st.setString(4, userModel.getGender());
-			st.setDate(5, Date.valueOf(userModel.getDob()));
+			st.setDate(5, (Date)userModel.getDob());
 			st.setString(6, userModel.getPhoneNumber());
 			st.setString(7, userModel.getEmail());
 			st.setString(8, userModel.getAddress());
@@ -152,14 +152,17 @@ public class DatabaseController {
 			st.setString(1, userName);
 			String encryptedPassword = encryptPassword(Password);
 			st.setString(2, encryptedPassword);
-			System.out.println("brfff");
+			
+			System.out.println("brfff"
+					+ encryptedPassword);
 			
 				ResultSet rs = st.executeQuery();
 				int role = isAdmin(con, userName) ? 1 : 0;
-				System.out.println("rs commited");
-				System.out.println("isAdmin: " + isAdmin(con, userName));
-				System.out.println("role at getUser: " + role);
-				System.out.println("BOOLff " + (rs.next() && (role == 0)));
+//				System.out.println("rs commited");
+//				System.out.println("isAdmin: " + isAdmin(con, userName));
+//				System.out.println("role at getUser: " + role);
+//				System.out.println("BOOLff " + (rs.next() && (role == 0)));
+				System.out.println("rss"+ rs.getRow());
 				if (rs.next()) {
 					System.out.println("rs.next active xa");
 					if (role == 0) {
@@ -203,8 +206,9 @@ public class DatabaseController {
 //		int result1 = 0;
 
 //		System.out.println("userNam;" + UserName + "a");
-		PreparedStatement st = con.prepareStatement(StringUtil.GET_USER_BY_USER_NAME);
+		PreparedStatement st = con.prepareStatement(StringUtil.GET_ADMIN);
 		st.setString(1, UserName);
+		st.setString(2, "1");
 
 		ResultSet result1 = st.executeQuery();
 //		System.out.println("whl: " + result1);
@@ -213,7 +217,7 @@ public class DatabaseController {
 		// exception: java.sql.SQLException: Before start of result set
 
 //		System.out.println("role no: "+role);
-		return (result1.getInt("role") == 1) ? true : false;
+		return result1.next();
 //		return (result1 > 0) ? true : false;
 //		return true;
 	}

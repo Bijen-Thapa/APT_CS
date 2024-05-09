@@ -33,9 +33,7 @@
 </head>
 <body >
 
-		<% HttpSession userSession = request.getSession(); 
-		
-		out.print("page "+userSession.getAttribute("username"));%>	
+		<% HttpSession userSession = request.getSession(); %>	
 		
 		<jsp:include page="header.jsp"></jsp:include>
         <!-- Header section start -->

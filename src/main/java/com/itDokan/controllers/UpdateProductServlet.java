@@ -2,7 +2,9 @@ package com.itDokan.controllers;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.itDokan.controllers.database.DatabaseController;
+import com.itDokan.models.ProductModel;
 import com.itDokan.rest.StringUtil;
 
 /**
@@ -20,34 +23,26 @@ import com.itDokan.rest.StringUtil;
 public class UpdateProductServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public UpdateProductServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		
-		
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		doGet(request, response);
-		System.out.println("post inia");
-		System.out.println(request.getAttribute("prod_id"));
+		String id = request.getParameter("edit");
+		DatabaseController dbCon = new DatabaseController();
 		
+		request.getSession().setAttribute("editProduct", id);
+		
+		response.sendRedirect(request.getContextPath()+ "/view/Pages/admin/editProduct.jsp");
+		
+//		try (Connection con = dbCon.getConnection()){
+//			PreparedStatement st = con.prepareStatement(StringUtil.GET_PRODUCT_BY_ID);
+//			st.setString(1, id);
+//			ResultSet res = st.executeQuery();
+//			
+//			ProductModel prod = new ProductModel(res.getString("name"), res.getString("description"), res.getString("model"), res.getString("brand"), res.getString("img"), res.getInt("id"), res.getInt("qty"), res.getInt("price"), res.getInt("category"), res.getDate("addedDate"));
+//			
+//			
+//			
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
 	}
 	
 	

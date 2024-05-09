@@ -1,3 +1,5 @@
+<%@page import="com.itDokan.models.ProductModel"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="com.itDokan.controllers.database.DatabaseController"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -39,6 +41,8 @@ ResultSet resultSet = null;
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
 	rel="stylesheet">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+	
 <style>
 @import
 	url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap')
@@ -78,7 +82,43 @@ ResultSet resultSet = null;
 </style>
 </head>
 <body class="bg-gray-100 font-family-karla flex">
-
+	<% 
+		HttpSession session1 = request.getSession();
+		if(session1.getAttribute("addProductStatus") != null){
+			
+		
+		
+	%>
+	<script type="text/javascript">
+	
+		<% if (session1.getAttribute("addProductStatus")=="success"){ %>
+		sweetAlert("Product added successfully!")
+	
+		<% }else{ %>
+		sweetAlert("Failed", "The product was not added, try again!")
+		<% } %>
+	</script>
+	
+	<% } %>
+	<script type="text/javascript">
+		function sweetAlert(msg) {
+			swal({
+				  title: "Success",
+				  text: msg,
+				  icon: "success",
+				  button: "ok"
+				});
+		}
+		function sweetAlert(msg, notOk) {
+			swal({
+				  title: "warning",
+				  text: msg,
+				  icon: "warning",
+				  button: "ok"
+				});
+		}
+		
+	</script>
 
 	<jsp:include page="admin_nav.jsp"></jsp:include>
 	<div class="w-full flex flex-col h-screen overflow-y-hidden">
@@ -263,6 +303,7 @@ ResultSet resultSet = null;
 										// 										statement = connection.createStatement();
 										String sql = "select * from product";
 										PreparedStatement st = con.prepareStatement(sql);
+										
 										ResultSet result = st.executeQuery();
 										while (result.next()) {
 									%>
@@ -280,7 +321,11 @@ ResultSet resultSet = null;
 										<td
 											class="text-left py-3 px-2 uppercase font-semibold text-sm"><%=result.getString("description")%></td>
 										<td
-											class="text-left py-3 px-2 uppercase font-semibold text-sm"><%=result.getString("product_category")%></td>
+											class="text-left py-3 px-2 uppercase font-semibold text-sm"><% for (productCategoryModel p: lisst) {
+											if(p.getId()==result.getInt("id")){ %>
+											<%=   p.getName()%>
+											<% }} %>
+											</td>
 										<td
 											class="text-left py-3 px-4 uppercase font-semibold text-sm"><%=result.getString("qty")%></td>
 										<td
@@ -288,7 +333,7 @@ ResultSet resultSet = null;
 										<td>
 <!-- 											<a class="bg-green-500 py-2 px-3 rounded text-white" href="editProduct.jsp"> -->
 <!-- 												Edit</a> -->
-											<button class="bg-green-500 py-2 px-3 rounded text-white" name="edit">
+											<button class="bg-green-500 py-2 px-3 rounded text-white" name="edit" value="<%= result.getString("id") %>" formmethod="post">
 												Edit</button>
 											<button class="bg-red-500 py-2 px-3 rounded text-white" formmethod="post">
 												Delete</button>

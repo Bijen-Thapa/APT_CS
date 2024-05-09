@@ -1,3 +1,4 @@
+<%@page import="org.apache.jasper.tagplugins.jstl.core.If"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -7,8 +8,32 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Registration</title>
 <link rel="stylesheet" href="../Stylesheet/registration.css" />
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
+	<%
+	HttpSession session1 = request.getSession();
+	if (session1.getAttribute("error") != null) {
+	String msg = String.valueOf(session1.getAttribute("error"));
+		
+	%>
+	<script type="text/javascript">
+		sweetAlert("<%= msg %>")
+	</script>
+
+	<%
+	}
+	%>
+	<script type="text/javascript">
+		function sweetAlert(msg) {
+			swal({
+				title : "warning",
+				text : msg,
+				icon : "warning",
+				button : "ok"
+			});
+		}
+	</script>
 	<div class="container">
 		<div>
 			<h1>Registration</h1>
@@ -26,7 +51,8 @@
 				</div>
 				<div class="input_box">
 					<label for="phone">Phone Number:</label> <input type="text"
-						id="phoneNumber" name="phoneNumber" placeholder="Phone number" required />
+						id="phoneNumber" name="phoneNumber" placeholder="Phone number"
+						required />
 				</div>
 				<div class="input_box">
 					<label for="email">Email:</label> <input type="text" id="email"
@@ -69,5 +95,6 @@
 			</p>
 		</form>
 	</div>
+	
 </body>
 </html>

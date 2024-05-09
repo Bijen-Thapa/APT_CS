@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import com.itDokan.controllers.database.DatabaseController;
@@ -80,6 +81,8 @@ public class AddProductServlet extends HttpServlet {
 
 	private void addProduct(HttpServletRequest request, HttpServletResponse response, String imgPath) {
 		DatabaseController dbCon = new DatabaseController();
+		HttpSession session = request.getSession();
+		session.setAttribute("addProductStatus", null);
 		try (Connection con = dbCon.getConnection()) {
 			ProductModel newProduct = new ProductModel(request.getParameter("name"),
 					request.getParameter("description"), "test_model", "test_brand", imgPath,
@@ -89,9 +92,13 @@ public class AddProductServlet extends HttpServlet {
 			int result = dbCon.addProduct(newProduct);
 
 			if (result == -1) {
-				System.out.println("-1");
+				System.out.println("-1");				
+				session.setAttribute("addProductStatus", "failed");
+				response.sendRedirect(request.getContextPath() + "/view/Pages/admin/admin_product.jsp");
+
 			} else if (result == 1) {
 				System.out.println("success");
+				session.setAttribute("addProductStatus", "success");				
 				response.sendRedirect(request.getContextPath() + "/view/Pages/admin/admin_product.jsp");
 
 			} else {

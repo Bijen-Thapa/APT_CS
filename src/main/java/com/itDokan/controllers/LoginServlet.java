@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.itDokan.controllers.database.DatabaseController;
+import com.itDokan.models.UserModel;
 
 /**
  * Servlet implementation class LoginServlet
@@ -25,18 +27,6 @@ public class LoginServlet extends HttpServlet {
 
 	DatabaseController dbController = new DatabaseController();
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
-	public LoginServlet() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -45,36 +35,43 @@ public class LoginServlet extends HttpServlet {
 
 		System.out.println("Username: " + userName);
 		System.out.println("password: " + password);
-		DatabaseController cc = new DatabaseController();
-		
-//		System.out.println("enc: "+cc.encryptPassword("admin"));
-		
 
-//		String decryptedPassword = decryptPassword(password);
 		int loginResult = dbController.getUserLoginInfo(userName, password);
-		System.out.println("logRes: "+loginResult);
-		
+		System.out.println("logRes: " + loginResult);
+
+//		RequestDispatcher dispatch = null;
+		HttpSession session = request.getSession();
+
 		if (loginResult == 1) {
-			HttpSession userSession = request.getSession();
-			userSession.setAttribute("username", userName);
-			userSession.setMaxInactiveInterval(3 * 60); // 60 seconds times 3 
+			UserModel userObj = new userObject().creaateUserModel(userName);
+			session.setAttribute("username", userName);
+//			session.setAttribute("userID", (String.valueOf(userObj.getId())));
+			session.setAttribute("userModel", new userObject().creaateUserModel(userName));
+			session.setMaxInactiveInterval(10); // 60 seconds times 3
 //			response.sendRedirect(request.getContextPath() + "/view/Pages/Header.jsp");
-			
+
 //			response.addCookie(null)
 //			System.out.println("servlet "+userSession.getClass());
 //			Cookie cok = new Cookie("accountDetail", cc.getUserLoginInfo(userName, decryptedPassword));
+			request.setAttribute("status", "Sucess");
+
 			response.sendRedirect(request.getContextPath() + "/view/Pages/product.jsp");
+//			dispatch = request.getRequestDispatcher("index.jsp");
 
-		} else if (loginResult == 11){
-			HttpSession ses = request.getSession();
-			ses.setAttribute("isAdmin", true);
-			ses.setAttribute("activeTab", "dashboard");
+		} else if (loginResult == 11) {
+			session.setAttribute("isAdmin", true);
+			session.setAttribute("activeTab", "dashboard");
 			response.sendRedirect(request.getContextPath() + "/view/Pages/admin/admin_product.jsp");
+//			dispatch = request.getRequestDispatcher("admin/admin_index.jsp");
 
-		}else {
+		} else {
+			session.setAttribute("error", "invalid username or password");
+			request.setAttribute("status", "Failed");
 			response.sendRedirect(request.getContextPath() + "/view/Pages/login.jsp?error=1");
 			System.out.println("Error found");
-		} 
+//			dispatch = request.getRequestDispatcher("login.jsp");
+		}
+//		dispatch.forward(request, response);
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 
 // TODO: user login and redirect them to respective pages according to role

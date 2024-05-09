@@ -16,10 +16,15 @@ public class StringUtil {
 	
 	public static String GET_ORDER_list= "SELECT * FROM order_list";
 	
+	public static String GET_PRODUCT_BY_ID= "SELECT * FROM `product` WHERE id = ?";
 	
 	public static String  INSER_PRODUCT_CATEGORY = "INSERT INTO product_category (name, description) VALUES (?, ?);";
 	
 	public static String GET_USER_BY_USER_NAME = "SELECT * FROM user WHERE user_name = ?";
+
+	public static String GET_CART_ITEM= "SELECT * FROM `cart` WHERE user_id = ?";
+
+	public static String GET_ADMIN = "SELECT * FROM user WHERE user_name = ? AND role = ?";
 	
 	public static final String GET_LOGIN_USER_INFO = "SELECT * FROM user WHERE user_name = ? AND password = ?";
 
