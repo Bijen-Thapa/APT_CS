@@ -29,10 +29,7 @@ public class UpdateProductServlet extends HttpServlet {
 		
 		request.getSession().setAttribute("editProduct", id);
 		
-//		response.sendRedirect(request.getContextPath()+ "/view/Pages/admin/editProduct.jsp");
-		editProd
-		
-		
+		response.sendRedirect(request.getContextPath()+ "/view/Pages/admin/editProduct.jsp");
 		
 //		try (Connection con = dbCon.getConnection()){
 //			PreparedStatement st = con.prepareStatement(StringUtil.GET_PRODUCT_BY_ID);

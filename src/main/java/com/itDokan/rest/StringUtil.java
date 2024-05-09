@@ -26,6 +26,12 @@ public class StringUtil {
 
 	public static String GET_ADMIN = "SELECT * FROM user WHERE user_name = ? AND role = ?";
 	
+    private static final String DELETE_USER = "delete from users where id = ?;";
+    
+    private static final String UPDATE_USER = "update user set first_name = ?, last_name= ?, phone_number =?, address= ? where id = ?;";
+
+    private static final String UPDATE_PRODUCT = "update product set name = ?, description= ?, price =?, img= ? where id = ?;";
+	
 	public static final String GET_LOGIN_USER_INFO = "SELECT * FROM user WHERE user_name = ? AND password = ?";
 
 	public static final String DELET_PRODUCT = "DELETE FROM `product` WHERE `product`.`id` = ?";

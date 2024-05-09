@@ -1,3 +1,4 @@
+<%@page import="java.net.http.HttpClient.Redirect"%>
 <%@page import="java.io.PrintWriter"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -12,28 +13,6 @@
 </head>
 <body>
 
-	<%
-	session = request.getSession();
-
-	if (session.getAttribute("username") == null) {
-	%>
-	<script type="text/javascript">
-		sweetAlert("Session expired, Login again to continue!")
-	</script>
-
-	<%
-	}
-	%>
-	<script type="text/javascript">
-		function sweetAlert(msg) {
-			swal({
-				title : "warning",
-				text : msg,
-				icon : "warning",
-				button : "ok"
-			});
-		}
-	</script>
 	<!-- Header section start -->
 	<header
 		class="flex justify-between px-10 py-4 bg-black font-mono text-white max-sm:hidden">
@@ -52,6 +31,7 @@
 				<%
 				HttpSession ses = request.getSession();
 				if (ses.getAttribute("username") != null) {
+				
 				%>
 <!-- 				<li class="mx-2"><a href="user_profile.jsp">My Account</a></li> -->
 				<div class="relative group" id="dropdownBtn">
@@ -74,13 +54,27 @@
 				%>
 
 				<li class="mx-2"><a href="login.jsp"> Sign in/Sign up</a></li>
+				
+				
+	
+	
+				<script type="text/javascript">
+
+					sweetAlert("Session expired, Login again to continue!")
+</script>
+				
 				<%
+	
+	response.sendRedirect("login.jsp");
+	
+				
 				}
 				%>
 			</ul>
 		</div>
 	</header>
 	<!-- Header section end -->
+	
 
 	<!-- Nav section start -->
 	<nav class="max-sm:flex max-sm:justify-between max-sm:items-center">
@@ -136,13 +130,11 @@
 			</div>
 			<div id="dropdown"
 				class="rounded border-gray-300 bg-white absolute top-10 w-[400px] hidden z-10 group-hover:block">
-				<div class="cursor-pointer hover:bg-gray-300 p-4">Account
-					Settings</div>
-				<div class="cursor-pointer hover:bg-gray-300 p-4">Support</div>
-				<div class="cursor-pointer hover:bg-gray-300 p-4">License</div>
-				<div class="cursor-pointer hover:bg-gray-300 p-4">Sign out</div>
-				<div class="cursor-pointer hover:bg-gray-300 p-4">Account
-					Settings</div>
+				<div class="cursor-pointer hover:bg-gray-300 p-4">Dell</div>
+				<div class="cursor-pointer hover:bg-gray-300 p-4">Acer</div>
+				<div class="cursor-pointer hover:bg-gray-300 p-4">Alienware</div>
+				<div class="cursor-pointer hover:bg-gray-300 p-4">Asus</div>
+				<div class="cursor-pointer hover:bg-gray-300 p-4">HP</div>
 			</div>
 		</div>
 		<div class="relative group" id="dropdownBtn">
@@ -169,14 +161,22 @@
 			</div>
 			<div id="dropdown"
 				class="rounded border-gray-300 bg-white absolute top-10 w-[400px] hidden z-10 group-hover:block">
-				<div class="cursor-pointer hover:bg-gray-300 p-4">Account
-					Settings</div>
-				<div class="cursor-pointer hover:bg-gray-300 p-4">Support</div>
-				<div class="cursor-pointer hover:bg-gray-300 p-4">License</div>
-				<div class="cursor-pointer hover:bg-gray-300 p-4">Sign out</div>
-				<div class="cursor-pointer hover:bg-gray-300 p-4">Account
-					Settings</div>
+				<div class="cursor-pointer hover:bg-gray-300 p-4">Monitors</div>
+				<div class="cursor-pointer hover:bg-gray-300 p-4">Keyboards</div>
+				<div class="cursor-pointer hover:bg-gray-300 p-4">Mouse</div>
+				<div class="cursor-pointer hover:bg-gray-300 p-4">Headphone</div>
+				<div class="cursor-pointer hover:bg-gray-300 p-4">Storage Drive</div>
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript">
+		function sweetAlert(msg) {
+			swal({
+				title : "warning",
+				text : msg,
+				icon : "warning",
+				button : "ok"
+			});
+		}
+	</script>
 </body>
