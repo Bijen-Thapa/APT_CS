@@ -11,7 +11,7 @@
                     <p>Support: </p>
                 </li>
                 <li class="mb-2">
-                    <p>sales@itdokan	.com.np</p>
+                    <a href="mailto:sales@itdokan.com.np">sales@itdokan.com.np</a>
                 </li>
                 <li class="mb-2">
                     <p>01-5350440 / 01-5911594</p>
