@@ -22,10 +22,6 @@ import javax.servlet.http.Part;
 import com.itDokan.controllers.database.DatabaseController;
 import com.itDokan.models.ProductModel;
 
-/**
- * Servlet implementation class AdminServlet
- */
-//@WebServlet("/AddProductServlet")
 @WebServlet("/AddProductServlet")
 @MultipartConfig
 public class AddProductServlet extends HttpServlet {
@@ -55,25 +51,7 @@ public class AddProductServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 
-//			String query = "INSERT INTO product (id, name, description, model, qty, brand, product_category, price, image, added_date) VALUES (NULL, '?', '?', '?', '?', '?', '?', '?', '?', NULL);";
-//			PreparedStatement st = con.prepareStatement(query);
-
-//			st.setString(1, request.getParameter("name"));
-//			st.setString(2, request.getParameter("description"));
-//			st.setString(3, "test_model");
-//			st.setString(4, request.getParameter("qty"));
-//			st.setString(5, "test_brand");
-//			st.setString(6, request.getParameter("category"));
-//			st.setString(7, request.getParameter("price"));
-//			st.setString(8, "test_img");
-
-//		System.out.println(image);
-//		doGet(request, response);
-		
-//		uploadImageServlet im = new uploadImageServlet();
-//		Strings imgPath = im.doPost(request);
 		String imgPath = addImage(request);
 		addProduct(request, response, imgPath);		
 		
@@ -106,7 +84,7 @@ public class AddProductServlet extends HttpServlet {
 			}
 
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e);
 		}
 	}
 	
@@ -132,40 +110,4 @@ public class AddProductServlet extends HttpServlet {
 		
 		return databasePath;
 	}
-	
-//	  private String addImage(HttpServletRequest request) throws IOException, ServletException {
-//	        Part filePart = request.getPart("img");
-//	        String filename = filePart.getSubmittedFileName();
-//
-//	        // Derive savePath from the web application's context path
-//	        ServletContext context = getServletContext();
-//	        String imagesDirectory = context.getRealPath("/images");
-//	        
-//	        // Ensure the directory exists
-//	        File imagesDir = new File(imagesDirectory);
-//	        if (!imagesDir.exists()) {
-//	            imagesDir.mkdirs();
-//	        }
-//
-//	        String savePath = imagesDirectory + File.separator + filename;
-//	        String databasePath = "images" + File.separator + filename;
-//
-//	        try (InputStream fileContent = filePart.getInputStream();
-//	             FileOutputStream outputStream = new FileOutputStream(savePath)) {
-//
-//	            byte[] buffer = new byte[4096];  // Standard buffer size
-//	            int bytesRead;
-//
-//	            while ((bytesRead = fileContent.read(buffer)) != -1) {
-//	                outputStream.write(buffer, 0, bytesRead);
-//	            }
-//
-//	        } catch (IOException e) {
-//	            throw new ServletException("File upload failed", e);
-//	        }
-//
-//	        return databasePath;
-//	    }
-	
-
 }

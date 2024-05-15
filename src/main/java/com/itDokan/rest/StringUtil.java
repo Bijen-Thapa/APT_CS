@@ -16,7 +16,7 @@ public class StringUtil {
 	
 	public static String GET_ORDER_list= "SELECT * FROM order_list";
 	
-	public static String GET_PRODUCT_BY_ID= "SELECT * FROM `product` WHERE id = ?";
+	public static String GET_PRODUCT_BY_ID= "SELECT * FROM product WHERE id = ?";
 	
 	public static String  INSER_PRODUCT_CATEGORY = "INSERT INTO product_category (name, description) VALUES (?, ?);";
 	
@@ -26,11 +26,13 @@ public class StringUtil {
 
 	public static String GET_ADMIN = "SELECT * FROM user WHERE user_name = ? AND role = ?";
 	
-    private static final String DELETE_USER = "delete from users where id = ?;";
-    
-    private static final String UPDATE_USER = "update user set first_name = ?, last_name= ?, phone_number =?, address= ? where id = ?;";
+	public static final String DELETE_USER = "delete from user where id = ?;";
 
-    private static final String UPDATE_PRODUCT = "update product set name = ?, description= ?, price =?, img= ? where id = ?;";
+    public static final String DELETE_PRODUCT = "delete from product where id = ?";
+    
+    public static final String UPDATE_USER = "update user set first_name = ?, last_name= ?, phone_number =?, address= ? where id = ?;";
+
+    public static final String UPDATE_PRODUCT = "update product set name = ?,userName description= ?, qty=?, price =? product_category=? where id = ?;";
 	
 	public static final String GET_LOGIN_USER_INFO = "SELECT * FROM user WHERE user_name = ? AND password = ?";
 

@@ -30,7 +30,7 @@
 			<ul class="flex">
 				<%
 				HttpSession ses = request.getSession();
-				if (ses.getAttribute("username") != null) {
+				if (ses.getAttribute("userName") != null) {
 				
 				%>
 <!-- 				<li class="mx-2"><a href="user_profile.jsp">My Account</a></li> -->
@@ -85,17 +85,19 @@
 			</div>
 			<div
 				class="flex items-center flex-1 sm:max-w-[300px] md:max-w-[500px] max-sm:hidden">
+<!-- 				<form action="/searchServlet" method="post"> -->
 				<input
-					class="border-solid border-2 relative h-10 flex-1 p-2 w-0 max-sm:ml-3"
-					type="text" placeholder="Search">
+					class="bord	er-solid border-2 relative h-10 flex-1 p-2 w-0 max-sm:ml-3"
+					type="text" placeholder="Search" name="serchBox">
 				<button
 					class="bg-red-500 p-2 w-[40px] text-center rounded max-sm:mr-3">
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</button>
+<!-- 				</form> -->
 			</div>
 			<div>
 				<ul class="flex max-sm:hidden items-center">
-					<li class="m-2 hover:text-red-500"><a href=""><i
+					<li class="m-2 hover:text-red-500"><a href="cart.jsp"><i
 							class="fa-solid fa-cart-shopping mr-2"></i>Cart</a></li>
 					<li class="m-2 hover:text-red-500"><a href=""><i
 							class="fa-regular fa-heart mr-2"></i>WishList</a></li>
@@ -126,7 +128,7 @@
 	<div class="flex py-2 bg-black max-sm:hidden">
 		<div class="relative group" id="dropdownBtn">
 			<div class=" px-5 py-2 rounded font-bold text-white">
-				<a href=""> Laptop By Brands </a>
+				<a href="product.jsp"> Laptop By Brands </a>
 			</div>
 			<div id="dropdown"
 				class="rounded border-gray-300 bg-white absolute top-10 w-[400px] hidden z-10 group-hover:block">
@@ -139,7 +141,7 @@
 		</div>
 		<div class="relative group" id="dropdownBtn">
 			<div class=" px-5 py-2 rounded font-bold text-white">
-				<a href=""> Gaming </a>
+				<a href="product.jsp"> Gaming </a>
 			</div>
 			<div id="dropdown"
 				class="rounded border-gray-300 bg-white absolute top-10 w-[400px] hidden z-10 group-hover:block">
@@ -157,7 +159,7 @@
 		</div>
 		<div class="relative group" id="dropdownBtn">
 			<div class=" px-5 py-2 rounded font-bold text-white">
-				<a href="product.html"> Products </a>
+				<a href="product.jsp"> Products </a>
 			</div>
 			<div id="dropdown"
 				class="rounded border-gray-300 bg-white absolute top-10 w-[400px] hidden z-10 group-hover:block">
@@ -167,6 +169,12 @@
 				<div class="cursor-pointer hover:bg-gray-300 p-4">Headphone</div>
 				<div class="cursor-pointer hover:bg-gray-300 p-4">Storage Drive</div>
 			</div>
+		</div>
+		<div class="relative group" id="dropdownBtn">
+			<div class=" px-5 py-2 rounded font-bold text-white">
+				<a href="aboutUs.jsp"> AboutUs </a>
+			</div>
+			
 		</div>
 	</div>
 	<script type="text/javascript">

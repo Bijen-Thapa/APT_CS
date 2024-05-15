@@ -17,11 +17,9 @@ import com.itDokan.rest.StringUtil;
 public class DatabaseController {
 
 	public DatabaseController() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public Connection getConnection() throws ClassNotFoundException, SQLException {
-		// Class.forName("com.mysql.jdbc.Driver");
 		Class.forName("com.mysql.cj.jdbc.Driver");
 
 		String url = "jdbc:mysql://localhost:3306/it_dokan";
@@ -58,7 +56,6 @@ public class DatabaseController {
 	}
 
 	public String encryptPassword(String password) {
-		// TODO Auto-generated method stub
 		try {
 			MessageDigest encrypt = MessageDigest.getInstance("SHA-256");
 			byte[] encryption = encrypt.digest(password.getBytes());
@@ -78,7 +75,6 @@ public class DatabaseController {
 		}
 	}
 
-//<<<<<<< Updated upstream
 	public int addProduct(ProductModel productModel) {
 		try (Connection con = getConnection()) {
 			PreparedStatement st = con.prepareStatement(StringUtil.INSERT_PRODUCT);
@@ -102,6 +98,27 @@ public class DatabaseController {
 		}
 
 	}
+	public int updateProduct(ProductModel productModel) {
+		try (Connection con = getConnection()) {
+			PreparedStatement st = con.prepareStatement(StringUtil.UPDATE_PRODUCT);
+			
+			st.setString(1, productModel.getName());
+			st.setString(2, productModel.getDescription());
+			st.setInt(3, productModel.getQty());
+			st.setInt(4, productModel.getPrice());
+			st.setInt(5, productModel.getCategory());
+			st.setString(6, productModel.getId());
+			
+			int result = st.executeUpdate();
+			return result > 0 ? 1 : 0;
+			
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
+			System.out.println(e);
+			return -1;
+		}
+		
+	}
 
 	public int addProductCategry(productCategoryModel productCategory) {
 		try (Connection con = getConnection()) {
@@ -120,31 +137,10 @@ public class DatabaseController {
 		}
 
 	}
-//=======
 
-//	public int getUserLoginInfo(String userName, String password) {
-//		// TODO Auto-generated method stub
-//		
-//		try (Connection con = getConnection()) {
-//			PreparedStatement st = con.prepareStatement(StringUtil.GET_LOGIN_USER_INFO);
-//			st.setString(1, userName);
-//			st.setString(2, password);
-//			
-//			ResultSet rs = st.executeQuery();
-//			
-//			if (rs.next()) {
-//				return 1;
-//			} else {
-//				return 0;
-//			}
-//			
-//		} catch(SQLException | ClassNotFoundException ex) {
-//			ex.printStackTrace();
-//		}}
-//>>>>>>> Stashed changes
+
 
 	public int getUserLoginInfo(String userName, String Password) {
-		// TODO Auto-generated method stub
 		int ret = 97;
 		try {
 			Connection con = getConnection();
@@ -152,16 +148,11 @@ public class DatabaseController {
 			st.setString(1, userName);
 			String encryptedPassword = encryptPassword(Password);
 			st.setString(2, encryptedPassword);
-			
-			System.out.println("brfff"
-					+ encryptedPassword);
+	
 			
 				ResultSet rs = st.executeQuery();
 				int role = isAdmin(con, userName) ? 1 : 0;
-//				System.out.println("rs commited");
-//				System.out.println("isAdmin: " + isAdmin(con, userName));
-//				System.out.println("role at getUser: " + role);
-//				System.out.println("BOOLff " + (rs.next() && (role == 0)));
+
 				System.out.println("rss"+ rs.getRow());
 				if (rs.next()) {
 					System.out.println("rs.next active xa");
@@ -171,7 +162,6 @@ public class DatabaseController {
 						ret = 11;
 					}
 				} else {
-					System.out.println("dbCon getUinfo rs.next not");
 					ret = 0;
 				}
 			
@@ -202,24 +192,16 @@ public class DatabaseController {
 	}
 
 	public boolean isAdmin(Connection con, String UserName) throws SQLException {
-//		ResultSet result = null;
-//		int result1 = 0;
-
-//		System.out.println("userNam;" + UserName + "a");
 		PreparedStatement st = con.prepareStatement(StringUtil.GET_ADMIN);
 		st.setString(1, UserName);
 		st.setString(2, "1");
 
 		ResultSet result1 = st.executeQuery();
-//		System.out.println("whl: " + result1);
-//		System.out.println("whl ro: " + result1.getRow());
-//		System.out.println("get ro: " + result1.getInt("role"));
-		// exception: java.sql.SQLException: Before start of result set
 
-//		System.out.println("role no: "+role);
 		return result1.next();
-//		return (result1 > 0) ? true : false;
-//		return true;
+
 	}
+	
+	
 
 }

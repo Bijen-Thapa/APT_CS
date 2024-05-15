@@ -21,11 +21,11 @@
             <div class="sm:grid sm:grid-cols-2 sm:grid-rows-3 lg:grid lg:grid-cols-3 lg:grid-rows-2 xl:grid xl:grid-cols-5 xl:grid-rows-1 gap-y-2 mt-8">
                 <div class="max-sm:mx-auto max-sm:my-5 max-lg:mx-auto w-[240px] flex flex-col">
                     <div class="w-[240px] relative">
-                        <img src="images/sliderimg-2.jpg" alt="">
+                        <img src="../images/Acer Aspire 5 2021 11th Gen i3 2.webp" alt="">
                         <i class="fa-regular fa-heart mr-2 absolute top-2 right-1 text-white hover:text-red-500"></i>
                     </div>
                     <div>
-                        <a href="">Lenovo Yoga 6 2023 2-in-1 AMD Ryzen 5 7530U | 16GB RAM 512GB SSD | 13.3" FHD x360</a>
+                        <a href="">Acer Aspire 5 2021 11th Gen i3 2</a>
                         <p class="line-through text-gray-400">Rs 1,20,000</p>
                         <p>Rs 1,18,000</p>
                     </div>
@@ -33,11 +33,11 @@
                 </div>
                 <div class="max-sm:mx-auto max-sm:my-5 max-lg:mx-auto w-[240px] flex flex-col">
                     <div class="w-[240px] relative">
-                        <img src="images/sliderimg-2.jpg" alt="">
+                        <img src="../images/Acer Predator Helios Neo 16 2024 i9 14900HX 2.webp" alt="">
                         <i class="fa-regular fa-heart mr-2 absolute top-2 right-1 text-white hover:text-red-500"></i>
                     </div>
                     <div>
-                        <a href="">Lenovo Yoga 6 2023 2-in-1 AMD Ryzen 5 7530U | 16GB RAM 512GB SSD | 13.3" FHD x360</a>
+                        <a href="">Acer Predator Helios Neo 16 2024 i9 14900HX 2</a>
                         <p class="line-through text-gray-400">Rs 1,20,000</p>
                         <p>Rs 1,18,000</p>
                     </div>
@@ -45,11 +45,11 @@
                 </div>
                 <div class="max-sm:mx-auto max-sm:my-5 max-lg:mx-auto w-[240px] flex flex-col">
                     <div class="w-[240px] relative">
-                        <img src="images/sliderimg-2.jpg" alt="">
+                        <img src="../images/Dell Alienware M15 R6 i7 11800H 2.jpg" alt="">
                         <i class="fa-regular fa-heart mr-2 absolute top-2 right-1 text-white hover:text-red-500"></i>
                     </div>
                     <div>
-                        <a href="">Lenovo Yoga 6 2023 2-in-1 AMD Ryzen 5 7530U | 16GB RAM 512GB SSD | 13.3" FHD x360</a>
+                        <a href="">Dell Alienware M15 R6 i7 11800H 2s</a>
                         <p class="line-through text-gray-400">Rs 1,20,000</p>
                         <p>Rs 1,18,000</p>
                     </div>
@@ -57,11 +57,11 @@
                 </div>
                 <div class="max-sm:mx-auto max-sm:my-5 max-lg:mx-auto w-[240px] flex flex-col">
                     <div class="w-[240px] relative">
-                        <img src="images/sliderimg-2.jpg" alt="">
+                        <img src="../images/Dell G15 5530 2023 - i5 13450HX 1.jpg" alt="">
                         <i class="fa-regular fa-heart mr-2 absolute top-2 right-1 text-white hover:text-red-500"></i>
                     </div>
                     <div>
-                        <a href="">Lenovo Yoga 6 2023 2-in-1 AMD Ryzen 5 7530U | 16GB RAM 512GB SSD | 13.3" FHD x360</a>
+                        <a href="">Dell G15 5530 2023 - i5 13450HX 1</a>
                         <p class="line-through text-gray-400">Rs 1,20,000</p>
                         <p>Rs 1,18,000</p>
                     </div>
@@ -69,11 +69,11 @@
                 </div>
                 <div class="max-sm:mx-auto w-[240px] max-lg:mx-auto flex flex-col">
                     <div class="w-[240px] relative">
-                        <img src="images/sliderimg-2.jpg" alt="">
+                        <img src="../images/Dell inspiron 15 3520.webp" alt="">
                         <i class="fa-regular fa-heart mr-2 absolute top-2 right-1 text-white hover:text-red-500"></i>
                     </div>
                     <div>
-                        <a href="">Lenovo Yoga 6 2023 2-in-1 AMD Ryzen 5 7530U | 16GB RAM 512GB SSD | 13.3" FHD x360</a>
+                        <a href="">Dell inspiron 15 3520</a>
                         <p class="line-through text-gray-400">Rs 1,20,000</p>
                         <p>Rs 1,18,000</p>
                     </div>
@@ -89,7 +89,7 @@
             <div class="sm:grid sm:grid-cols-3 gap-3">
                 <div class="flex flex-col items-center text-center">
                     <div>
-                        <img class="w-12 h-12 rounded-full object-cover" src="images/user1.jpg" alt="">
+                        <img class="w-12 h-12 rounded-full object-cover" src="../images/user1.jpg" alt="">
                     </div>
                     <div>
                         <p>The attention to detail and the quality of the product exceeded my expectations.Highly recommended!</p>
@@ -99,7 +99,7 @@
                 </div>
                 <div class="flex flex-col items-center text-center">
                     <div>
-                        <img class="w-12 h-12 rounded-full object-cover" src="images/user1.jpg" alt="">
+                        <img class="w-12 h-12 rounded-full object-cover" src="../images/user1.jpg" alt="">
                     </div>
                     <div>
                         <p>The attention to detail and the quality of the product exceeded my expectations.Highly recommended!</p>
@@ -109,7 +109,7 @@
                 </div>
                 <div class="flex flex-col items-center text-center">
                     <div>
-                        <img class="w-12 h-12 rounded-full object-cover" src="images/user1.jpg" alt="">
+                        <img class="w-12 h-12 rounded-full object-cover" src="../images/user1.jpg" alt="">
                     </div>
                     <div>
                         <p>The attention to detail and the quality of the product exceeded my expectations.Highly recommended!</p>

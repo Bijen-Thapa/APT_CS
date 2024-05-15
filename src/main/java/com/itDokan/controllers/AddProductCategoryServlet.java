@@ -38,32 +38,16 @@ public class AddProductCategoryServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-//		DatabaseController dbCon = new DatabaseController();
-//		String query = "INSERT INTO product_category (name, description) VALUES (?, ?);";
-//		
-//		try (Connection con = dbCon.getConnection();){
-//			PreparedStatement st = con.prepareStatement(query);
-//			
-//			
-//		} catch (Exception e) {
-//			// TODO: handle exception
-//		}
+		
 		DatabaseController dbCon = new DatabaseController();
 		productCategoryModel newCategory = new productCategoryModel(request.getParameter("name"), request.getParameter("description"));
 		int result = dbCon.addProductCategry(newCategory);
 		
 		if (result == 1) {
-			System.out.println(request.getContextPath());
 			response.sendRedirect(request.getContextPath() + "/view/Pages/admin/product_category.jsp");
 		} else {
 
 		}
 		
 	}
-	
-	public void name() {
-		
-	}
-
 }

@@ -1,3 +1,4 @@
+<%@page import="com.itDokan.rest.StringUtil"%>
 <%@page import="com.itDokan.models.UserModel"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="com.itDokan.controllers.database.DatabaseController"%>
@@ -11,28 +12,13 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.itDokan.controllers.productCategory"%>
 
-<%
-String id = request.getParameter("userid");
-String driver = "com.mysql.cj.jdbc.Driver";
-String connectionUrl = "jdbc:mysql://localhost:3306/";
-String database = "test";
-String userid = "root";
-String password = "";
-try {
-	Class.forName(driver);
-} catch (ClassNotFoundException e) {
-	e.printStackTrace();
-}
-Connection connection = null;
-Statement statement = null;
-ResultSet resultSet = null;
-%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tailwind Admin Template</title>
+<title>Profile Page</title>
 <meta name="author" content="David Grzyb">
 <meta name="description" content="">
 
@@ -50,7 +36,7 @@ ResultSet resultSet = null;
 }
 
 .bg-sidebar {
-	background: #3d68ff;
+	background: #000000;
 }
 
 .cta-btn {
@@ -66,11 +52,11 @@ ResultSet resultSet = null;
 }
 
 .active-nav-link {
-	background: #1947ee;
+	background: #6a6a6;
 }
 
 .nav-item:hover {
-	background: #1947ee;
+	background: #2c2c2f;
 }
 
 .account-link:hover {
@@ -78,32 +64,20 @@ ResultSet resultSet = null;
 }
 </style>
 </head>
-<body class="bg-gray-100 font-family-karla flex">
+<body style="display: flow;">
 
-
-<% Object uModel = request.getSession().getAttribute("userModel"); %>
+<div>
+	<jsp:include page="header.jsp"></jsp:include>
+</div>
+<div style="display: flex;">
+	<%
+	Object uModel = request.getSession().getAttribute("userModel");
+	%>
 	<jsp:include page="user_nav.jsp"></jsp:include>
+	<div class="bg-gray-100 font-family-karla flex"> 
 	<div class="w-full flex flex-col h-screen overflow-y-hidden">
-		<!-- Desktop Header -->
-		<header class="w-full items-center bg-white py-2 px-6 hidden sm:flex">
-			<div class="w-1/2"></div>
-			<div x-data="{ isOpen: false }"
-				class="relative w-1/2 flex justify-end">
-				<button @click="isOpen = !isOpen"
-					class="realtive z-10 w-12 h-12 rounded-full overflow-hidden border-4 border-gray-400 hover:border-gray-300 focus:border-gray-300 focus:outline-none">
-					<img src="https://source.unsplash.com/uJ8LNVCBjFQ/400x400">
-				</button>
-				<button x-show="isOpen" @click="isOpen = false"
-					class="h-full w-full fixed inset-0 cursor-default"></button>
-				<div x-show="isOpen"
-					class="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
-					<a href="#" class="block px-4 py-2 account-link hover:text-white">Account</a>
-					<a href="#" class="block px-4 py-2 account-link hover:text-white">Support</a>
-					<a href="#" class="block px-4 py-2 account-link hover:text-white">Sign
-						Out</a>
-				</div>
-			</div>
-		</header>
+		
+		
 
 		<!-- Mobile Header & Nav -->
 		<header x-data="{ isOpen: false }"
@@ -158,10 +132,21 @@ ResultSet resultSet = null;
             </button> -->
 		</header>
 
+		<%
+		String id = String.valueOf(session.getAttribute("userName"));
+		DatabaseController dc = new DatabaseController();
+		//                     out.print();
+		try (Connection con = dc.getConnection()) {
+			String query = StringUtil.GET_USER_BY_USER_NAME;
+			PreparedStatement pst = con.prepareStatement(query);
+			pst.setString(1, id);
+			try (ResultSet rs = pst.executeQuery()) {
+				while (rs.next()) {
+		%>
 		<div class="flex flex-col">
 			<div class="w-60 h-60">
-				<img src="./images/user3.jpg" class="w-full h-full rounded-full"
-					alt="">
+				<img src="../<%=rs.getString("image")%>"
+					class="w-full h-full rounded-full" alt="">
 			</div>
 			<div class="border-solid border-2">
 				<div class="px-4 py-5 sm:px-6 ">
@@ -172,9 +157,15 @@ ResultSet resultSet = null;
 				</div>
 				<div class="border-t border-gray-200 px-4 py-5 sm:p-0">
 					<div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-						<dt class="text-sm font-medium text-gray-500">Full name</dt>
-						<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-							Amrit Gurung</dd>
+						<dt class="text-sm font-medium text-gray-500">First Name</dt>
+						<input class="py-2 px-2" id="description" name="firstName"
+							type="text" placeholder="First Name"
+							value="<%=rs.getString("first_name")%>
+					</div>
+<!-- 					<div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"> -->
+<!-- 						<dt class="text-sm font-medium text-gray-500">Full name</dt> -->
+<!-- 						<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2"> -->
+<!-- 							Amrit Gurung</dd> -->
 					</div>
 					<div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
 						<dt class="text-sm font-medium text-gray-500">Email address</dt>
@@ -196,7 +187,23 @@ ResultSet resultSet = null;
 			</div>
 		</div>
 
+
+		<%
+		}
+
+		} catch (Exception e) {
+		e.printStackTrace();
+		}
+		} catch (Exception e1) {
+		e1.printStackTrace();
+		}
+		%>
+
+
+
 	</div>
+</div>
+</div>
 
 	<!-- AlpineJS -->
 	<script

@@ -14,7 +14,7 @@
                     <a href="mailto:sales@itdokan.com.np">sales@itdokan.com.np</a>
                 </li>
                 <li class="mb-2">
-                    <p>01-5350440 / 01-5911594</p>
+                    <a href="tel:01-5350440">01-5350440 / 01-5911594</a>
                 </li>
             </ul>
             <button class="bg-black rounded p-2 border-solid border-2 w-30 hover:bg-red-600">

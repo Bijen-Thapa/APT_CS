@@ -12,22 +12,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.itDokan.controllers.productCategory"%>
 
-<%
-String id = request.getParameter("userid");
-String driver = "com.mysql.cj.jdbc.Driver";
-String connectionUrl = "jdbc:mysql://localhost:3306/";
-String database = "test";
-String userid = "root";
-String password = "";
-try {
-	Class.forName(driver);
-} catch (ClassNotFoundException e) {
-	e.printStackTrace();
-}
-Connection connection = null;
-Statement statement = null;
-ResultSet resultSet = null;
-%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -83,7 +68,7 @@ ResultSet resultSet = null;
 </head>
 <body class="bg-gray-100 font-family-karla flex">
 	<% 
-		HttpSession session1 = request.getSession();
+		HttpSession session1 = request.getSession(false);
 		if(session1.getAttribute("addProductStatus") != null){
 			
 		
@@ -97,9 +82,35 @@ ResultSet resultSet = null;
 		<% }else{ %>
 		sweetAlert("Failed", "The product was not added, try again!")
 		<% } %>
+		
+		<% 
+	if (session1.getAttribute("deleted") != null) {
+		%>
+		sweetAlert("<%= session1.getAttribute("deleted") %>")
+		
+		<%
+		session1.setAttribute("deleted", null);
+		}
+		
+		%>
+		<% 
+	if (session1.getAttribute("updateProductStatus") != null) {
+		%>
+		sweetAlert("<%= session1.getAttribute("updateProductStatus") %>")
+		
+		<%
+		session1.setAttribute("updateProductStatus", null);
+		}
+		
+		%>
+		
 	</script>
 	
-	<% } %>
+	<% }else{
+// 		if (session1.getAttribute("productUpdated") == true){
+// 			sweetAlert("Product updated successfully!")
+	}
+		%>
 	<script type="text/javascript">
 		function sweetAlert(msg) {
 			swal({
@@ -333,9 +344,9 @@ ResultSet resultSet = null;
 										<td>
 <!-- 											<a class="bg-green-500 py-2 px-3 rounded text-white" href="editProduct.jsp"> -->
 <!-- 												Edit</a> -->
-											<button class="bg-green-500 py-2 px-3 rounded text-white" name="edit" value="<%= result.getString("id") %>" formmethod="post">
+											<button class="bg-green-500 py-2 px-3 rounded text-white" name="editButton" value="<%= result.getString("id") %>" formmethod="get">
 												Edit</button>
-											<button class="bg-red-500 py-2 px-3 rounded text-white" formmethod="post">
+											<button class="bg-red-500 py-2 px-3 rounded text-white" onclick="<% session1.setAttribute("doDeleteProduct", result.getString("id")); %>" formmethod="post">
 												Delete</button>
 										</td>
 									</tr>

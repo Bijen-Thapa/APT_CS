@@ -13,7 +13,7 @@
 </head>
 <body>
 	<%
-	HttpSession session1 = request.getSession();
+	HttpSession session1 = request.getSession(false	);
 	if (session1.getAttribute("error") != null) {
 	String msg = String.valueOf(session1.getAttribute("error"));
 		
