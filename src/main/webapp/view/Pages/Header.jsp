@@ -40,13 +40,10 @@
 					</div>
 					<div id="dropdown"
 						class="rounded border-gray-300 bg-black absolute top-10 w-[400px] hidden z-10 group-hover:block">
-						<div class="cursor-pointer hover:bg-gray-300 p-4">Account
-							Settings</div>
+						<div class="cursor-pointer hover:bg-gray-300 p-4"><a href="user_profile.jsp">Account Settings</a></div>
 						<div class="cursor-pointer hover:bg-gray-300 p-4">Support</div>
-						<div class="cursor-pointer hover:bg-gray-300 p-4">License</div>
-						<div class="cursor-pointer hover:bg-gray-300 p-4"><a>Sign out</a></div>
-						<div class="cursor-pointer hover:bg-gray-300 p-4">Account
-							Settings</div>
+ 						<div class="cursor-pointer hover:bg-gray-300 p-4">License</div>
+						<div class="cursor-pointer hover:bg-gray-300 p-4"><form action="../../signoutServlet" method="post"> <button> Sign out </button></form></div>
 					</div>
 				</div>
 				<%
@@ -99,7 +96,7 @@
 				<ul class="flex max-sm:hidden items-center">
 					<li class="m-2 hover:text-red-500"><a href="cart.jsp"><i
 							class="fa-solid fa-cart-shopping mr-2"></i>Cart</a></li>
-					<li class="m-2 hover:text-red-500"><a href=""><i
+					<li class="m-2 hover:text-red-500"><a href="cart.jsp"><i
 							class="fa-regular fa-heart mr-2"></i>WishList</a></li>
 				</ul>
 			</div>

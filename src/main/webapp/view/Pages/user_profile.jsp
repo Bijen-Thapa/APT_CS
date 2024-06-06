@@ -65,14 +65,19 @@
 </style>
 </head>
 <body style="display: flow;">
-
+		<% 
+		HttpSession session1 = request.getSession(false);
+		
+		if (session1.getAttribute("userName")== null){
+			response.sendRedirect("login.jsp");
+		}
+		
+		%>
 <div>
 	<jsp:include page="header.jsp"></jsp:include>
 </div>
 <div style="display: flex;">
-	<%
-	Object uModel = request.getSession().getAttribute("userModel");
-	%>
+	
 	<jsp:include page="user_nav.jsp"></jsp:include>
 	<div class="bg-gray-100 font-family-karla flex"> 
 	<div class="w-full flex flex-col h-screen overflow-y-hidden">
@@ -122,10 +127,6 @@
 					class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-4 nav-item">
 					<i class="fas fa-sign-out-alt mr-3"></i> Sign Out
 				</a>
-				<button
-					class="w-full bg-white cta-btn font-semibold py-2 mt-3 rounded-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
-					<i class="fas fa-arrow-circle-up mr-3"></i> Upgrade to Pro!
-				</button>
 			</nav>
 			<!-- <button class="w-full bg-white cta-btn font-semibold py-2 mt-5 rounded-br-lg rounded-bl-lg rounded-tr-lg shadow-lg hover:shadow-xl hover:bg-gray-300 flex items-center justify-center">
                 <i class="fas fa-plus mr-3"></i> New Report
@@ -146,8 +147,9 @@
 		<div class="flex flex-col">
 			<div class="w-60 h-60">
 				<img src="../<%=rs.getString("image")%>"
-					class="w-full h-full rounded-full" alt="">
+					class="w-full h-full rounded-full" alt="User Profile">
 			</div>
+					<input class="py-2 px-2" id="img" name="img" type="file">
 			<div class="border-solid border-2">
 				<div class="px-4 py-5 sm:px-6 ">
 					<h3 class="text-lg leading-6 font-medium text-gray-900">User
@@ -157,10 +159,18 @@
 				</div>
 				<div class="border-t border-gray-200 px-4 py-5 sm:p-0">
 					<div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-						<dt class="text-sm font-medium text-gray-500">First Name</dt>
+					<div>
+					<dt class="text-sm font-medium text-gray-500">First Name</dt>
 						<input class="py-2 px-2" id="description" name="firstName"
 							type="text" placeholder="First Name"
-							value="<%=rs.getString("first_name")%>
+							value="<%=rs.getString("first_name")%>">
+					</div>
+						<div>
+					<dt class="text-sm font-medium text-gray-500">Last Name</dt>
+						<input class="py-2 px-2" id="description" name="lastName"
+							type="text" placeholder="First Name"
+							value="<%=rs.getString("last_name")%>">
+					</div>
 					</div>
 <!-- 					<div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"> -->
 <!-- 						<dt class="text-sm font-medium text-gray-500">Full name</dt> -->
@@ -169,19 +179,21 @@
 					</div>
 					<div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
 						<dt class="text-sm font-medium text-gray-500">Email address</dt>
-						<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-							example@gmail.com</dd>
+						<input class="py-2 px-2" id="description" name="email"
+							type="text" placeholder="Email"
+							value="<%=rs.getString("email")%>">
 					</div>
 					<div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
 						<dt class="text-sm font-medium text-gray-500">Phone number</dt>
-						<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-							(123) 456-7890</dd>
+						<input class="py-2 px-2" id="description" name="phoneNumber"
+							type="text" placeholder="First Name"
+							value="<%=rs.getString("phone_number")%>">
 					</div>
 					<div class="py-3 sm:py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
 						<dt class="text-sm font-medium text-gray-500">Address</dt>
-						<dd class="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-							123 Main St<br> Anytown, USA 12345
-						</dd>
+						<input class="py-2 px-2" id="description" name="address"
+							type="text" placeholder="Address"
+							value="<%=rs.getString("address")%>">
 					</div>
 				</div>
 			</div>

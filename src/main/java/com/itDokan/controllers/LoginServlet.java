@@ -31,7 +31,6 @@ public class LoginServlet extends HttpServlet {
 
 		if (loginResult == 1) {
 			session.setAttribute("userName", userName);
-			session.setAttribute("userModel", new userObject().creaateUserModel(userName));
 			session.setMaxInactiveInterval(3 * 60); // 60 seconds times 3
 
 			request.setAttribute("status", "Sucess");

@@ -148,8 +148,7 @@
 					class="absolute w-32 bg-white rounded-lg shadow-lg py-2 mt-16">
 					<a href="#" class="block px-4 py-2 account-link hover:text-white">Account</a>
 					<a href="#" class="block px-4 py-2 account-link hover:text-white">Support</a>
-					<a href="#" class="block px-4 py-2 account-link hover:text-white">Sign
-						Out</a>
+					<form class="block px-4 py-2 account-link hover:text-white" action="../../../signoutServlet" method="post"><button>Sign out</button></form>
 				</div>
 			</div>
 		</header>
@@ -260,6 +259,8 @@
 												productCategory cat = new productCategory();
 												ArrayList<productCategoryModel> lisst = cat.getProductCategory();
 												for (productCategoryModel mod : lisst) {
+													
+												
 												%>
 												<option value="<%=mod.getId()%>"><%=mod.getName()%></option>
 												<%
@@ -333,7 +334,8 @@
 											class="text-left py-3 px-2 uppercase font-semibold text-sm"><%=result.getString("description")%></td>
 										<td
 											class="text-left py-3 px-2 uppercase font-semibold text-sm"><% for (productCategoryModel p: lisst) {
-											if(p.getId()==result.getInt("id")){ %>
+											if(p.getId()==result.getInt("product_category")){ 
+											%>
 											<%=   p.getName()%>
 											<% }} %>
 											</td>

@@ -10,6 +10,16 @@
 
 </head>
 <body>
+
+
+<% 
+		HttpSession session1 = request.getSession(false);
+		
+		if (session1.getAttribute("userName")== null){
+			response.sendRedirect("login.jsp");
+		}
+		
+		%>
             <jsp:include page="header.jsp"></jsp:include>
         
            <main>

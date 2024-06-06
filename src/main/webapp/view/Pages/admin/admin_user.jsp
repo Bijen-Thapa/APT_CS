@@ -78,6 +78,57 @@ ResultSet resultSet = null;
 </style>
 </head>
 <body class="bg-gray-100 font-family-karla flex">
+	<% 
+		HttpSession session1 = request.getSession(false);
+		if(session1.getAttribute("addProductStatus") != null){
+			
+		
+		
+	%>
+	<script type="text/javascript">
+	
+		
+		
+		<% 
+	if (session1.getAttribute("deleted") != null) {
+		%>
+		sweetAlert("User deleted Successfully")
+		
+		<%
+		session1.setAttribute("deleted", null);
+		}%>
+		
+		
+		
+	
+		
+	</script>
+	
+	<% }else{
+// 		if (session1.getAttribute("productUpdated") == true){
+// 			sweetAlert("Product updated successfully!")
+	}
+		%>
+	<script type="text/javascript">
+		function sweetAlert(msg) {
+			swal({
+				  title: "Success",
+				  text: msg,
+				  icon: "success",
+				  button: "ok"
+				});
+		}
+		function sweetAlert(msg, notOk) {
+			swal({
+				  title: "warning",
+				  text: msg,
+				  icon: "warning",
+				  button: "ok"
+				});
+		}
+		
+	</script>
+
 
 
 	<jsp:include page="admin_nav.jsp"></jsp:include>
@@ -167,7 +218,7 @@ ResultSet resultSet = null;
 						<i class="fas fa-list mr-3"></i> Latest Reports
 					</p>
 					<div class="bg-white overflow-auto">
-						<form action="../../../ProductServlet" method="post">
+						<form action="../../../UpdateUserServlet" >
 							<table class="min-w-full bg-white">
 								<thead class="bg-gray-800 text-white">
 									<tr>
@@ -229,9 +280,9 @@ ResultSet resultSet = null;
 										<td
 											class="text-left py-3 px-4 uppercase font-semibold text-sm"><%= (result.getInt("role") == 0) ? "user" : "admin"%></td>
 										<td>
-											<button class="bg-green-500 py-2 px-3 rounded text-white">
+											<button class="bg-green-500 py-2 px-3 rounded text-white" name="editButton" value="<%= result.getString("id") %>" formmethod="get">
 												Edit</button>
-											<button class="bg-red-500 py-2 px-3 rounded text-white">
+											<button class="bg-red-500 py-2 px-3 rounded text-white" onclick="<% session1.setAttribute("doDeleteUser", result.getString("id")); %>" formmethod="post">
 												Delete</button>
 										</td>
 									</tr>

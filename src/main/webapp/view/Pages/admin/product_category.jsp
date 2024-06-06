@@ -10,22 +10,6 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="com.itDokan.controllers.productCategory"%>
 
-<%
-String id = request.getParameter("userid");
-String driver = "com.mysql.cj.jdbc.Driver";
-String connectionUrl = "jdbc:mysql://localhost:3306/";
-String database = "test";
-String userid = "root";
-String password = "";
-try {
-	Class.forName(driver);
-} catch (ClassNotFoundException e) {
-	e.printStackTrace();
-}
-// Connection connection = null;
-Statement statement = null;
-ResultSet resultSet = null;
-%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,8 +60,72 @@ ResultSet resultSet = null;
 	background: #3d68ff;
 }
 </style>
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 </head>
 <body class="bg-gray-100 font-family-karla flex">
+<% 
+		HttpSession session1 = request.getSession(false);
+		if(session1.getAttribute("addProductStatus") != null){
+			
+		
+		
+	%>
+	<script type="text/javascript">
+		
+	<% 
+	if (session1.getAttribute("catAdded") != null) {
+		%>
+		sweetAlert("Category added successfully!")
+		
+		<%
+		session1.setAttribute("deleted", null);
+		}else{
+			%>
+			sweetAlert("Operation failed!")
+			<%
+		}
+		
+		%>
+	
+		<% 
+	if (session1.getAttribute("deleted") != null) {
+		%>
+		sweetAlert("<%= session1.getAttribute("deleted") %>")
+		
+		<%
+		session1.setAttribute("deleted", null);
+		}
+		
+		%>
+	
+		
+	</script>
+	
+	<% }else{
+// 		if (session1.getAttribute("productUpdated") == true){
+// 			sweetAlert("Product updated successfully!")
+	}
+		%>
+	<script type="text/javascript">
+		function sweetAlert(msg) {
+			swal({
+				  title: "Success",
+				  text: msg,
+				  icon: "success",
+				  button: "ok"
+				});
+		}
+		function sweetAlert(msg, notOk) {
+			swal({
+				  title: "warning",
+				  text: msg,
+				  icon: "warning",
+				  button: "ok"
+				});
+		}
+		
+	</script>
 	<jsp:include page="admin_nav.jsp"></jsp:include>
 	<div class="w-full flex flex-col h-screen overflow-y-hidden">
 		<!-- Desktop Header -->
@@ -202,7 +250,7 @@ ResultSet resultSet = null;
 						<i class="fas fa-list mr-3"></i> Latest Reports
 					</p>
 					<div class="bg-white overflow-auto">
-						<form action="../../../ProductServlet" method="post">
+						<form action="../../../UpdateCategoryServlet">
 							<table class="min-w-full bg-white">
 								<thead class="bg-gray-800 text-white">
 									<tr>
@@ -248,9 +296,9 @@ ResultSet resultSet = null;
 										<td
 											class="text-left py-3 px-2 uppercase font-semibold text-sm"><%=result.getString("added_date")%></td>
 										<td>
-											<button class="bg-green-500 py-2 px-3 rounded text-white">
+											<button class="bg-green-500 py-2 px-3 rounded text-white" name="editButton" value="<%= result.getString("id") %>" formmethod="get">
 												Edit</button>
-											<button class="bg-red-500 py-2 px-3 rounded text-white">
+											<button class="bg-red-500 py-2 px-3 rounded text-white" onclick="<% session1.setAttribute("doDeleteProductCat", result.getString("id")); %>" formmethod="post">
 												Delete</button>
 										</td>
 									</tr>

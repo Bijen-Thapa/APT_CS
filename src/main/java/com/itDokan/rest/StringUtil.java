@@ -28,8 +28,11 @@ public class StringUtil {
 	
 	public static final String DELETE_USER = "delete from user where id = ?;";
 
-    public static final String DELETE_PRODUCT = "delete from product where id = ?";
-    
+	public static final String DELETE_PRODUCT = "delete from product where id = ?";
+
+	public static final String DELETE_PRODUCT_CAT = "delete from product_category where id = ?";
+	
+	
     public static final String UPDATE_USER = "update user set first_name = ?, last_name= ?, phone_number =?, address= ? where id = ?;";
 
     public static final String UPDATE_PRODUCT = "update product set name = ?,userName description= ?, qty=?, price =? product_category=? where id = ?;";

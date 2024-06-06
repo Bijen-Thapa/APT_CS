@@ -1,7 +1,6 @@
 package com.itDokan.controllers;
 
 import java.io.IOException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,20 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.itDokan.controllers.database.DatabaseController;
-import com.itDokan.models.productCategoryModel;
-
 /**
- * Servlet implementation class AddProductCategory
+ * Servlet implementation class signoutServlet
  */
-@WebServlet("/AddProductCategoryServlet")
-public class AddProductCategoryServlet extends HttpServlet {
+@WebServlet("/signoutServlet")
+public class signoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddProductCategoryServlet() {
+    public signoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,19 +35,10 @@ public class AddProductCategoryServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		DatabaseController dbCon = new DatabaseController();
-		productCategoryModel newCategory = new productCategoryModel(request.getParameter("name"), request.getParameter("description"));
-		int result = dbCon.addProductCategry(newCategory);
+		// TODO Auto-generated method stub
 		HttpSession session = request.getSession(false);
-		
-		if (result == 1) {
-			session.setAttribute("catAdded", "success");
-			response.sendRedirect(request.getContextPath() + "/view/Pages/admin/product_category.jsp");
-		} else {
-			session.setAttribute("catAdded", null);
-
-		}
-		
+		session.invalidate();
+		response.sendRedirect(request.getContextPath() + "/view/Pages/index.jsp");
 	}
+
 }

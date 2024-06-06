@@ -11,7 +11,6 @@ import com.itDokan.models.productCategoryModel;
 public class productCategory {
 
 	public productCategory() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public ArrayList<productCategoryModel> getProductCategory() {
@@ -26,11 +25,12 @@ public class productCategory {
 			while (result.next()) {
 				productCategoryModel cat = new productCategoryModel(Integer.parseInt(result.getString("id")), result.getString("name"), result.getString("description")); 
 				list.add(cat);
-//				System.out.println("aaa"+cat.getName());
+				
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
+			System.out.println(e);
 		}
+		
 		return list;
 	}
 	
